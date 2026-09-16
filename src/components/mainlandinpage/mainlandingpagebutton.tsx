@@ -1,0 +1,1 @@
+<button className="bg-primary text-primary-foreground hover:brightness-95 h-9 px-4 py-2"></button>
