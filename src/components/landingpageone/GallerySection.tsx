@@ -10,7 +10,7 @@ export default function GallerySection({ data }: { data: any }) {
         <section
             id='gallery'
             className={cn("py-20 w-full overflow-hidden", data.section?.className)}
-            style={{ backgroundColor: data.section?.bg || data.bg || '#fffaf8' }}
+            style={{ backgroundColor: data.section?.bg || data.bg || '#fffff' }}
         >
             <div className="mx-auto px-6 md:px-12 flex flex-col items-center">
 
@@ -91,7 +91,7 @@ export default function GallerySection({ data }: { data: any }) {
                             <div className="absolute left-[100px] right-0 h-px bg-gray-200 top-1/2 -translate-y-1/2 z-0" />
                             <div
                                 className="w-[120px] flex-shrink-0 z-20 sticky left-0 py-2"
-                                style={{ backgroundColor: data.section?.bg || data.bg || '#fffaf8' }} 
+                                style={{ backgroundColor: data.section?.bg || data.bg || '#fffff' }} 
                             >
                                 <div
                                     className="border border-gray-200 rounded-xl px-4 py-2 text-center font-semibold text-[16px] inline-block shadow-sm"
@@ -124,7 +124,7 @@ export default function GallerySection({ data }: { data: any }) {
                         <div className="flex w-full py-8">
                             <div
                                 className="w-[120px] flex-shrink-0 sticky left-0"
-                                style={{ backgroundColor: data.section?.bg || data.bg || '#fffaf8' }}
+                                style={{ backgroundColor: data.section?.bg || data.bg || '#fffff' }}
                             />
                             <div className="flex flex-nowrap gap-8 pl-8">
                                 {data.items.map((item: any, index: number) => (
@@ -142,7 +142,7 @@ export default function GallerySection({ data }: { data: any }) {
                             <div className="absolute left-[100px] right-0 h-px bg-gray-200 top-1/2 -translate-y-1/2 z-0" />
                             <div
                                 className="w-[120px] flex-shrink-0 z-20 sticky left-0 py-2"
-                                style={{ backgroundColor: data.section?.bg || data.bg || '#fffaf8' }}
+                                style={{ backgroundColor: data.section?.bg || data.bg || '#fffff' }}
                             >
                                 <div
                                     className="border border-gray-200 rounded-xl px-4 py-2 text-center font-semibold text-[16px] inline-block shadow-sm"

@@ -43,10 +43,17 @@ const CardRenderer = ({ card }: { card: any }) => {
 
     if (card.type === 'stat-image') {
         return (
-            <div className={cn("relative rounded-2xl overflow-hidden min-h-[280px] group shadow-sm", card.className)} style={{ backgroundColor: card.bg || '#111111' }}>
-                {card.image && (
-                    <img src={card.image} alt={card.subtext || 'Stat Image'} className="absolute inset-0 w-full h-full object-cover opacity-70 transition-transform duration-700 group-hover:scale-105 z-0" />
+            <div
+                className={cn(
+                    "relative rounded-2xl overflow-hidden min-h-[280px] group shadow-sm",
+                    card.className
                 )}
+                style={{
+                    backgroundColor: `color-mix(in srgb, ${card.bg} 20%, transparent)`,
+                }}
+            >                {card.image && (
+                <img src={card.image} alt={card.subtext || 'Stat Image'} className="absolute inset-0 w-full h-full object-cover opacity-70 transition-transform duration-700 group-hover:scale-105 z-0" />
+            )}
                 <div className="absolute inset-0 flex flex-col items-center justify-center text-center p-6 z-10">
                     <Smile className="w-12 h-12 mb-4" strokeWidth={1.5} style={{ color: card.iconColor || '#ffffff' }} />
                     <h3 className="font-medium text-[40px] tracking-tight mb-1" style={{ color: card.textColor || '#ffffff' }}>{card.heading || '1200+'}</h3>
@@ -98,15 +105,15 @@ export default function ReviewsSection({ data }: { data?: any }) {
     const columns = [col1, col2, col3];
 
     return (
-        <section id='reviews' className={cn("py-20 w-full overflow-hidden", data.section?.className)} style={{ backgroundColor: data.section?.bg || data.bg || '#fffaf8' }}>
+        <section id='reviews' className={cn("py-20 w-full overflow-hidden", data.section?.className)} style={{ backgroundColor: data.section?.bg || data.bg || '#ffff' }}>
             <div className="max-w-7xl mx-auto px-6 md:px-12 flex flex-col items-center">
                 <div className="flex flex-col items-center text-center max-w-[614px] mb-12 lg:mb-16">
-                    <SmartHeading 
-    as="h2"
-    text={data.heading?.text || data.heading}
-    className={cn("font-medium text-4xl md:text-[48px] leading-[1.2] tracking-[-1.5px] mb-4", data.heading?.className)} 
-    style={{ color: data.heading?.color || data.headingColor }}
-/>
+                    <SmartHeading
+                        as="h2"
+                        text={data.heading?.text || data.heading}
+                        className={cn("font-medium text-4xl md:text-[48px] leading-[1.2] tracking-[-1.5px] mb-4", data.heading?.className)}
+                        style={{ color: data.heading?.color || data.headingColor }}
+                    />
                     <p className={cn("text-base md:text-[18px] leading-[1.6]", data.description?.className)} style={{ color: data.description?.color || data.descColor || '#625b5b' }}>
                         {description}
                     </p>

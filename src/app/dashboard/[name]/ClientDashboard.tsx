@@ -2,9 +2,9 @@
 
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
-import { 
-  LayoutTemplate, ExternalLink, Loader2, Globe, Server, 
-  Lock, RefreshCw, Download, Settings 
+import {
+  LayoutTemplate, ExternalLink, Loader2, Globe, Server,
+  Lock, RefreshCw, Download, Settings
 } from "lucide-react";
 import merge from "lodash/merge";
 import WebsiteOne from "@/components/templates/WebsiteOne";
@@ -54,10 +54,10 @@ export default function ClientDashboard({ name, dbData }: DashboardProps) {
   }, [isHovering]);
 
   // If you manually add a domain to Firebase later, it will show up here
-  const activeDisplayUrl = dbData?.customDomain ? dbData.customDomain : `${name}.nexpetcare.online`;
-  const liveHref = dbData?.customDomain ? `https://${dbData.customDomain}` : `https://${name}.nexpetcare.online`;
+  const activeDisplayUrl = dbData?.customDomain ? dbData.customDomain : `${name}.nexpetcare.com`;
+  const liveHref = dbData?.customDomain ? `https://${dbData.customDomain}` : `https://${name}.nexpetcare.com`;
   const activeData = merge({}, dbData?.websiteOneData || {});
-  
+
   const handlePublish = async () => {
     setIsPublishing(true);
     const res = await publishWebsiteUpdatesAction(name);
@@ -68,7 +68,7 @@ export default function ClientDashboard({ name, dbData }: DashboardProps) {
     }
     setIsPublishing(false);
   };
-  
+
   const handleDeploy = async () => {
     setIsDeploying(true);
     setDeployStep(0);
@@ -135,13 +135,13 @@ export default function ClientDashboard({ name, dbData }: DashboardProps) {
         </div>
 
         <div className="flex flex-wrap items-center gap-3">
-          <Link 
+          <Link
             className="flex items-center gap-2 px-4 py-2 text-sm font-medium bg-white border border-gray-300 rounded-lg hover:bg-gray-50 hover:text-blue-600 transition-colors shadow-sm"
             href={`/dashboard/${name}/${dbData?.template === 'websiteOne' ? 'websiteOne' : 'websiteOne'}/edit`}
           >
             <LayoutTemplate size={16} /> Visual Editor
           </Link>
-          
+
           {isDeployed && (
             <button
               onClick={handlePublish}
@@ -152,7 +152,7 @@ export default function ClientDashboard({ name, dbData }: DashboardProps) {
               {isPublishing ? "Publishing..." : "Publish Updates"}
             </button>
           )}
-          
+
           {paid ? (
             <button onClick={handleDownload} disabled={downloading} className="flex items-center gap-2 px-5 py-2 text-sm font-semibold bg-black text-white rounded-lg hover:bg-gray-800 transition-colors shadow-md disabled:opacity-70">
               {downloading ? <Loader2 size={16} className="animate-spin" /> : <Download size={16} />}
@@ -182,7 +182,7 @@ export default function ClientDashboard({ name, dbData }: DashboardProps) {
             <div>
               <h2 className="text-xl font-bold text-gray-900">Deploy app for free</h2>
               <p className="text-gray-500 text-sm mt-1">
-                Make your template live on <span className="font-mono bg-gray-100 px-1 rounded text-gray-700">{name}.nexpetcare.online</span>.
+                Make your template live on <span className="font-mono bg-gray-100 px-1 rounded text-gray-700">{name}.nexpetcare.com</span>.
               </p>
             </div>
           </div>
@@ -239,7 +239,7 @@ export default function ClientDashboard({ name, dbData }: DashboardProps) {
           </div>
         </div>
       </div>
-      
+
     </div>
   );
 }

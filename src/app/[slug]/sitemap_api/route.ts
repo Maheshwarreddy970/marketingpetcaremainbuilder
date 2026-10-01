@@ -6,17 +6,17 @@ export const dynamic = "force-dynamic";
 
 export async function GET(request: Request, { params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  
+
   // Fetch data to see if custom domain exists
   const data = await getWebsiteData(slug);
-  
+
   if (!data) {
     return new NextResponse('Not Found', { status: 404 });
   }
 
-  const domain = data.customDomain 
-    ? `https://${data.customDomain}` 
-    : `https://${slug}.nexpetcare.online`;
+  const domain = data.customDomain
+    ? `https://${data.customDomain}`
+    : `https://${slug}.nexpetcare.com`;
 
   // Generate the raw XML string
   const sitemap = `<?xml version="1.0" encoding="UTF-8"?>

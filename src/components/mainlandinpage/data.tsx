@@ -324,3 +324,59 @@ bottom: {
     ]
   }
 };
+
+
+// --- HOW IT WORKS CONTENT ---
+export const HOW_IT_WORKS_CONTENT = {
+  heading: "How It Works",
+  description: "Get your pet grooming business online and thriving in just a few simple steps.",
+  steps: [
+    {
+      title: "Book a Strategy Call",
+      description: "Schedule a free consultation. We'll discuss your grooming business, target audience, and specific needs.",
+      colorTheme: "orange",
+      colors: {
+        bg: "bg-orange-50 dark:bg-orange-500/10",
+        text: "text-orange-500 dark:text-orange-400",
+        border: "border-orange-100 dark:border-orange-500/20",
+      },
+    },
+    {
+      title: "Design & Build",
+      description: "We design a stunning, fast, and mobile-friendly website tailored specifically to pet groomers.",
+      colorTheme: "blue",
+      colors: {
+        bg: "bg-blue-50 dark:bg-blue-500/10",
+        text: "text-blue-600 dark:text-blue-400",
+        border: "border-blue-100 dark:border-blue-500/20",
+      },
+    },
+    {
+      title: "Review & Refine",
+      description: "You review the site. We make unlimited revisions until it looks exactly the way you want it.",
+      colorTheme: "purple",
+      colors: {
+        bg: "bg-purple-50 dark:bg-purple-500/10",
+        text: "text-purple-600 dark:text-purple-400",
+        border: "border-purple-100 dark:border-purple-500/20",
+      },
+    },
+    {
+      title: "Launch & Grow",
+      description: "We launch your site, set up your booking system, and help you start converting visitors into loyal clients.",
+      colorTheme: "orange",
+      colors: {
+        bg: "bg-orange-50 dark:bg-orange-500/10",
+        text: "text-orange-500 dark:text-orange-400",
+        border: "border-orange-100 dark:border-orange-500/20",
+      },
+    },
+  ],
+  positions: [
+    { className: "md:absolute md:top-0 md:left-[15%]", rotate: "rotate-6" },
+    { className: "md:absolute md:top-[120px] md:right-[15%]", rotate: "-rotate-6" },
+    { className: "md:absolute md:top-[450px] md:left-[15%]", rotate: "rotate-6" },
+    { className: "md:absolute md:top-[570px] md:right-[10%]", rotate: "-rotate-6" },
+    { className: "md:absolute md:top-[850px] md:left-[15%]", rotate: "rotate-6" },
+  ]
+};

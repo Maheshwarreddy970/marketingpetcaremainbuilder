@@ -155,8 +155,8 @@ export default function ClientSettings({ slug, initialData }: { slug: string, in
                         {settings.faviconLight ? <img src={settings.faviconLight} className="w-full h-full object-cover" /> : <Globe size={14} className="text-gray-400" />}
                       </div>
                       <div>
-                        <p className="text-[13px] text-gray-900 leading-tight">nexpetcare.online</p>
-                        <p className="text-[12px] text-gray-500 leading-tight">https://{slug}.nexpetcare.online</p>
+                        <p className="text-[13px] text-gray-900 leading-tight">nexpetcare.com</p>
+                        <p className="text-[12px] text-gray-500 leading-tight">https://{slug}.nexpetcare.com</p>
                       </div>
                     </div>
                     <h3 className="text-[20px] text-[#1a0dab] font-medium leading-snug hover:underline cursor-pointer truncate">

@@ -7,17 +7,17 @@ import { revalidateTag, revalidatePath } from "next/cache";
 export async function connectCustomDomainAction(slug: string, customDomain: string) {
   try {
     const cleanDomain = customDomain.replace(/^https?:\/\//, "").replace(/\/$/, "").toLowerCase();
-    
+
     const zoneId = process.env.CLOUDFLARE_ZONE_ID;
     const globalApiKey = process.env.CLOUDFLARE_GLOBAL_API_KEY;
-    const email = process.env.CLOUDFLARE_EMAIL; 
-    const fallbackDomain = process.env.NEXT_PUBLIC_FALLBACK_DOMAIN || "cname.nexpetcare.online";
+    const email = process.env.CLOUDFLARE_EMAIL;
+    const fallbackDomain = process.env.NEXT_PUBLIC_FALLBACK_DOMAIN || "cname.nexpetcare.com";
 
     if (!zoneId || !globalApiKey || !email) {
       return { success: false, error: "Missing Cloudflare GLOBAL API KEY or Email in .env.local" };
     }
 
-    const headers: any = { 
+    const headers: any = {
       "Content-Type": "application/json",
       "X-Auth-Email": email.trim(),
       "X-Auth-Key": globalApiKey.trim()
@@ -28,7 +28,7 @@ export async function connectCustomDomainAction(slug: string, customDomain: stri
       method: "GET",
       headers,
     });
-    
+
     const checkData = await checkResponse.json();
     let domainData = checkData.result?.[0]; // Will be undefined if it doesn't exist
 
@@ -42,7 +42,7 @@ export async function connectCustomDomainAction(slug: string, customDomain: stri
           ssl: { method: "txt", type: "dv" }
         }),
       });
-      
+
       const createData = await createResponse.json();
 
       if (!createResponse.ok) {
@@ -52,8 +52,8 @@ export async function connectCustomDomainAction(slug: string, customDomain: stri
     }
 
     // 3. EXTRACT RECORDS: Grab the ownership and SSL TXT records
-  // ... inside connectCustomDomainAction ...
-    
+    // ... inside connectCustomDomainAction ...
+
     // 3. EXTRACT RECORDS: Grab the ownership and SSL TXT records
     const ownershipTxt = domainData.ownership_verification;
     const sslTxt = domainData.ssl?.validation_records?.[0];
@@ -92,7 +92,7 @@ export async function checkDomainStatusAction(slug: string, customDomain: string
     if (!zoneId || !token || !email) return { success: false, error: "Missing Credentials" };
 
     // 🔥 HARDCODED TO MATCH THE WORKING TEST SCRIPT
-    const headers: any = { 
+    const headers: any = {
       "Content-Type": "application/json",
       "X-Auth-Email": email.trim(),
       "X-Auth-Key": token.trim()
@@ -133,7 +133,7 @@ export async function deployWebsiteAction(slug: string) {
     revalidateTag(`website-${slug}`);
     // @ts-ignore
     revalidateTag("website");
-    
+
     // 🔥 Bulletproof fallback: natively clear the URL route
     revalidatePath(`/${slug}`);
 
@@ -200,18 +200,18 @@ export async function publishWebsiteUpdatesAction(slug: string) {
     revalidateTag(`website-${slug}`);
     // @ts-ignore
     revalidateTag("website");
-    
+
     // 🔥 3. Explicitly clear the custom domain cache if it exists
     if (websiteData?.customDomain) {
       // @ts-ignore
       revalidateTag(`website-${websiteData.customDomain}`);
       revalidatePath(`/${websiteData.customDomain}`, 'page');
     }
-    
+
     // 4. Force clear the Next.js static HTML for the normal routes
     revalidatePath(`/${slug}`, 'page');
     revalidatePath(`/${slug}`, 'layout');
-    
+
     // 5. Force clear the Dashboard/Editor
     revalidatePath(`/dashboard/${slug}`);
     revalidatePath(`/dashboard/${slug}/edit`);

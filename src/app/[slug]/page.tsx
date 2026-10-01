@@ -15,7 +15,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const settings = data?.settings || {};
 
   // Build canonical URL for SEO
-  const domain = data?.customDomain ? `https://${data.customDomain}` : `https://${slug}.nexpetcare.online`;
+  const domain = data?.customDomain ? `https://${data.customDomain}` : `https://${slug}.nexpetcare.com`;
 
   return {
     title: settings.seoTitle || `${slug} | NexPet Care`,
@@ -42,7 +42,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       siteName: data?.clientName || slug,
       images: [
         {
-          url: settings.ogImage || settings.faviconLight || "https://nexpetcare.online/default-og.jpg",
+          url: settings.ogImage || settings.faviconLight || "https://nexpetcare.com/default-og.jpg",
           width: 1200,
           height: 630,
         },
@@ -77,17 +77,17 @@ export default async function LiveTenantPage({ params }: { params: Promise<{ slu
   const currentPath = headersList.get('x-invoke-path') || '/';
 
   if (settings.redirects && settings.redirects.length > 0) {
-      const match = settings.redirects.find((r: any) => r.oldPath === currentPath);
-      if (match) {
-          redirect(match.newPath); // Fires a 301 Permanent Redirect instantly
-      }
+    const match = settings.redirects.find((r: any) => r.oldPath === currentPath);
+    if (match) {
+      redirect(match.newPath); // Fires a 301 Permanent Redirect instantly
+    }
   }
 
   // ==========================================
   // 🔥 BUILD LOCAL BUSINESS SCHEMA (JSON-LD)
   // ==========================================
   const info = templateData?.footer?.info || {};
-  const domain = data.customDomain ? `https://${data.customDomain}` : `https://${slug}.nexpetcare.online`;
+  const domain = data.customDomain ? `https://${data.customDomain}` : `https://${slug}.nexpetcare.com`;
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -118,7 +118,7 @@ export default async function LiveTenantPage({ params }: { params: Promise<{ slu
     // 🔥 Used a div wrapper instead of <html> to prevent React Hydration errors
     <div id="tenant-wrapper" lang={settings.language || "en"} dir={settings.rtlLayout ? "rtl" : "ltr"} className={htmlClasses.join(" ")}>
       <main className="w-full min-h-screen">
-        
+
         {/* Inject JSON-LD into the head invisibly */}
         <script
           type="application/ld+json"
@@ -126,7 +126,7 @@ export default async function LiveTenantPage({ params }: { params: Promise<{ slu
         />
 
         <TemplateComponent data={templateData} slug={slug} />
-        
+
         {settings.googleAnalyticsId && (
           <script async src={`https://www.googletagmanager.com/gtag/js?id=${settings.googleAnalyticsId}`}></script>
         )}

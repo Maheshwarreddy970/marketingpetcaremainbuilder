@@ -10,15 +10,15 @@ export const config = {
 
 export default async function middleware(req: NextRequest) {
   const url = req.nextUrl;
-  
+
   let hostname = req.headers.get("X-Subdomain-Host") || req.headers.get("host") || "";
-  hostname = hostname.replace("www.", ""); 
+  hostname = hostname.replace("www.", "");
 
-  const mainDomains = ["localhost:3000", "nexpetcare.online"];
+  const mainDomains = ["localhost:3000", "nexpetcare.com"];
 
-  // 2. SUBDOMAIN ROUTING (e.g., m.nexpetcare.online)
-  if (hostname.endsWith(".nexpetcare.online") && !mainDomains.includes(hostname)) {
-    const subdomain = hostname.replace(".nexpetcare.online", "");
+  // 2. SUBDOMAIN ROUTING (e.g., m.nexpetcare.com)
+  if (hostname.endsWith(".nexpetcare.com") && !mainDomains.includes(hostname)) {
+    const subdomain = hostname.replace(".nexpetcare.com", "");
     return NextResponse.rewrite(new URL(`/${subdomain}${url.pathname}`, req.url));
   }
 

@@ -3,7 +3,7 @@ import { COMPARISON_DATA, SECTION_CONTENT_COMPARISON, TABLE_HEADERS } from "./da
 
 export function UsVsThemComparison() {
     return (
-        <section className="bg-white px-4 py-8 md:py-12">
+        <section className="">
             {/* Header Section */}
             <div className="mb-12 mt-4 flex flex-col items-center justify-center space-y-3 text-center tracking-tight md:mb-24 md:mt-16 md:space-y-4">
                 <div className="w-fit gap-2 rounded-3xl border-[1.3px] border-[#D6D6D6] px-4 py-1.5 text-xs font-medium shadow-[0px_1px_2px_0px_#0000001A,0px_4px_4px_0px_#00000017,0px_9px_5px_0px_#0000000D,0px_16px_6px_0px_#00000003,0px_25px_7px_0px_#00000000] md:text-sm lg:text-base">
@@ -18,15 +18,8 @@ export function UsVsThemComparison() {
             </div>
 
             {/* Comparison Container */}
-            <div className="relative mx-auto w-full max-w-6xl overflow-hidden rounded-2xl border border-[#E6E6E6] shadow-sm md:rounded-[35px]">
-                {/* Dot-grid backdrop (Stays fixed while table scrolls) */}
-                <div
-                    className="absolute top-0 left-0 h-full w-full opacity-60 md:opacity-100"
-                    style={{
-                        backgroundImage: "radial-gradient(circle, #EBEBEB 1px, transparent 1px)",
-                        backgroundSize: "10px 10px",
-                    }}
-                />
+            <div className="relative mx-auto w-full  ">
+
 
                 {/* Rotated icon chip (Hidden on very small screens to save space) */}
                 <div className="absolute -right-6 -top-6 -z-10 hidden rotate-[14deg] sm:block">
@@ -43,7 +36,7 @@ export function UsVsThemComparison() {
                 {/* Scrollable Table Area */}
                 <div className="overflow-x-auto p-4 md:p-8 lg:p-14">
                     <div className="relative min-w-[540px] md:min-w-[800px]">
-                        
+
                         {/* Elevated highlight lane behind the "us" column */}
                         <div
                             className="pointer-events-none absolute bottom-0 top-0 rounded-2xl bg-[#2462EA] shadow-lg md:rounded-3xl"

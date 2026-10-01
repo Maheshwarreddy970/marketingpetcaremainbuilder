@@ -36,7 +36,7 @@ export default function ProcessSection({ data }: { data: any }) {
                                         </div>
                                     </div>
 
-                                    <div className="hidden lg:flex absolute left-1/2 -translate-x-1/2 w-6 h-6 rounded-full z-10 border-4 shadow-sm" style={{ backgroundColor: data.styling?.lineColor || data.lineColor, borderColor: data.section?.bg || data.bg }} />
+                                    <div className="hidden lg:flex absolute left-1/2 ml-2.5 -translate-x-1/2 w-6 h-6 rounded-full z-10 border-4 shadow-sm" style={{ backgroundColor: data.styling?.lineColor || data.lineColor, borderColor: data.section?.bg || data.bg }} />
 
                                     <div className={`w-full lg:w-1/2 flex flex-col justify-center ${isEven ? 'lg:items-end lg:text-right' : 'lg:items-start text-left'}`}>
                                         <div className="w-full max-w-[474px]">

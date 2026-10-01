@@ -5,11 +5,10 @@ import { CallToAction } from "@/components/mainlandinpage/Cta";
 import Faq from "@/components/mainlandinpage/Faq";
 import Footer from "@/components/mainlandinpage/Footer";
 import Herosection from "@/components/mainlandinpage/herosection";
+import HowItWorksDemo from "@/components/mainlandinpage/Howitworks";
 import Integrate from "@/components/mainlandinpage/Integration";
 import Navbar from "@/components/mainlandinpage/navbar";
 import Pricing from "@/components/mainlandinpage/Pricing";
-import Review from "@/components/mainlandinpage/Review";
-import {VideoPlayer} from "@/components/mainlandinpage/video-player";
 
 
 export default function Home() {
@@ -21,6 +20,7 @@ export default function Home() {
         <UsVsThemComparison></UsVsThemComparison>
         <Availability></Availability>
         <Pricing></Pricing>
+        <HowItWorksDemo></HowItWorksDemo>
         <Faq></Faq>
         <CallToAction></CallToAction>
         <Footer></Footer>

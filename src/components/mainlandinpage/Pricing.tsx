@@ -24,15 +24,7 @@ export default function Pricing() {
       {/* Pricing Card */}
       <div className="mt-8 md:mt-16  mx-auto">
         <div className="relative overflow-hidden rounded-[35px] border border-[#E6E6E6] bg-white">
-          {/* dotted background, same pattern as hero section */}
-          <div
-            className="absolute -z-0 top-0 left-0 w-full h-full"
-            style={{
-              backgroundImage:
-                "radial-gradient(circle, #e6e6e6 1px, transparent 1px)",
-              backgroundSize: "10px 10px",
-            }}
-          />
+       
 
           <div className="relative grid items-center gap-12 divide-y p-8 md:p-14 md:grid-cols-2 md:divide-x md:divide-y-0 divide-[#E6E6E6]">
             {/* Left: price + CTA */}

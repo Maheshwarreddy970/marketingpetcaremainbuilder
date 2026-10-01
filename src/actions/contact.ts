@@ -30,20 +30,20 @@ export async function submitContactFormAction(formData: FormData) {
 
     // 🔥 2. SUBSCRIPTION CHECK: Block form if account is unpaid
     if (dbData.paid !== true) {
-      return { 
-        success: false, 
-        error: "Form submissions are temporarily disabled for this website. Please contact the business directly." 
+      return {
+        success: false,
+        error: "Form submissions are temporarily disabled for this website. Please contact the business directly."
       };
     }
-    
+
     // 3. Get Target Email
     let targetEmail = dbData.ownerEmail;
     if (!targetEmail && dbData.websiteOneData?.footer?.info?.email?.href) {
-        targetEmail = dbData.websiteOneData.footer.info.email.href.replace("mailto:", "");
+      targetEmail = dbData.websiteOneData.footer.info.email.href.replace("mailto:", "");
     }
 
     if (!targetEmail) {
-        return { success: false, error: "This website has not configured a receiving email address yet." };
+      return { success: false, error: "This website has not configured a receiving email address yet." };
     }
 
     const cleanTargetEmail = targetEmail.replace("mailto:", "").trim();
@@ -56,9 +56,9 @@ export async function submitContactFormAction(formData: FormData) {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        from: "NexPet Care <noreply@nexpetcare.online>", 
+        from: "NexPet Care <noreply@nexpetcare.com>",
         to: cleanTargetEmail,
-        reply_to: email, 
+        reply_to: email,
         subject: `New Website Lead: ${name}`,
         html: `
           <div style="font-family: sans-serif; color: #333; max-width: 600px; line-height: 1.6;">

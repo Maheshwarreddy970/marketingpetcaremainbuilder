@@ -8,14 +8,8 @@ import { HERO_CONTENT } from './data'
 export default function Herosection() {
   return (
     <div className="md:h-[912px] h-[710px] p-4 relative rounded-[35px] border border-[#E6E6E6] mt-5 overflow-hidden">
-      <div
-        className="absolute -z-20 top-0 left-0 w-full h-full"
-        style={{
-          backgroundImage: "radial-gradient(circle, #e6e6e6 1px, transparent 1px)",
-          backgroundSize: "10px 10px",
-        }}
-      />
-      
+     
+
       {/* Globe Icon */}
       <div className="absolute -z-10 md:top-24 md:left-36 top-4 left-4 rotate-[-15.11deg]">
         <div

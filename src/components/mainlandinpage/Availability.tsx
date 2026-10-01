@@ -59,7 +59,7 @@ function CheckIcon() {
 export default function Availability() {
     return (
         <>
-            <div className="flex flex-col items-center justify-center space-y-3 my-16 md:my-24 tracking-tight text-center mt-40 md:mt-40">
+            <div className="flex flex-col items-center justify-center space-y-3 my-16 md:my-24 tracking-tight text-center mt-16">
                 <div className="w-fit px-3 md:text-base text-sm py-1 rounded-3xl gap-2 border-[1.3px] border-[#D6D6D6] shadow-[0px_1px_2px_0px_#0000001A,0px_4px_4px_0px_#00000017,0px_9px_5px_0px_#0000000D,0px_16px_6px_0px_#00000003,0px_25px_7px_0px_#00000000]">
                     {AVAILABILITY_CONTENT.badge}
                 </div>
@@ -70,7 +70,7 @@ export default function Availability() {
                     {AVAILABILITY_CONTENT.description}
                 </p>
             </div>
-            <div className="w-4/5 mx-auto mt-10 md:mt-24">
+            <div className=" mx-auto mt-10 md:mt-24">
                 <div className="w-full aspect-[2/1] bg-[#FAFAFA] rounded-lg relative font-sans">
                     <WorldMapDemo />
                 </div>

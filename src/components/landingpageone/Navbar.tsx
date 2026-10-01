@@ -42,6 +42,10 @@ export default function Navbar({ data }: { data: any }) {
   // 🚀 Track URL Hash for `#gallery`, `#services`, `#reviews`, etc.
   const [activeHash, setActiveHash] = useState("");
 
+  // ✨ ANIMATION STATES
+  const [isMounted, setIsMounted] = useState(false);
+  const [animationsDone, setAnimationsDone] = useState(false);
+
   useEffect(() => {
     // Scroll-Spy Logic
     const handleScroll = () => {
@@ -69,11 +73,18 @@ export default function Navbar({ data }: { data: any }) {
       }
     };
 
-    // Run once on mount to set the initial highlight immediately
     handleScroll();
-
     window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+
+    // ✨ Trigger Entry Animations
+    const t1 = setTimeout(() => setIsMounted(true), 50); // Start fade in
+    const t2 = setTimeout(() => setAnimationsDone(true), 1500); // Clear delays so hover fx are snappy
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      clearTimeout(t1);
+      clearTimeout(t2);
+    };
   }, [activeHash]);
 
   if (!data) return null;
@@ -81,7 +92,6 @@ export default function Navbar({ data }: { data: any }) {
   const logo = data.logo || { src: "", alt: "Logo" };
   const links = data.links || [];
 
-  // Graceful fallbacks for the nested schema
   const navBg = data.section?.bg || data.bg || "transparent";
   const linkColor = data.styling?.linkColor || data.linkColor || "#625b5b";
   const hoverColor = data.styling?.linkHoverColor || data.linkHoverColor || "#1e0c05";
@@ -94,6 +104,17 @@ export default function Navbar({ data }: { data: any }) {
     const cleanName = iconName.trim();
     return ICON_MAP[cleanName] || ICON_MAP[cleanName.charAt(0).toUpperCase() + cleanName.slice(1)] || Star;
   };
+
+  // ✨ ANIMATION HELPERS
+  const fadeDownAnim = cn(
+    animationsDone ? "" : "transition-all duration-1000 ease-out transform",
+    isMounted ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-6"
+  );
+
+  const fadeUpAnim = cn(
+    animationsDone ? "" : "transition-all duration-1000 ease-out transform",
+    isMounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+  );
 
   return (
     <>
@@ -111,70 +132,77 @@ export default function Navbar({ data }: { data: any }) {
       >
         <div className="px-6 md:px-12 lg:px-24 xl:px-40 py-3 flex items-center justify-between relative">
           
-          {/* LOGO */}
-          <a href={"/"} className={cn("relative flex items-center justify-start ", logo.className)}>
-            {logo.src ? (
-              <img
-                src={logo.src}
-                alt={logo.alt || "Business Logo"}
-                className="w-40 h-12 max-w-full object-contain object-left transition-all" 
-              />
-            ) : (
-              <PawIcon className="h-11 w-11" style={{ color: data.cta?.bg }} />
-            )}
-          </a>
-
-          {/* DYNAMIC NAVIGATION LINKS */}
-          <div 
-            className="flex items-center rounded-full px-1 py-1 gap-2 shadow-sm border bg-white"
-            style={{ backgroundColor: navBg, borderColor: hoverColor + '20' }}
-          >
-            {links.length > 0 ? (
-              links.map((link: any, index: number) => {
-                const cleanHref = (link.href || "").trim();
-                const isActive = cleanHref === "/" || cleanHref === ""
-                  ? (pathname === "/" && (!activeHash || activeHash === "#" || activeHash === "/"))
-                  : activeHash === cleanHref;
-
-                return (
-                  <a
-                    key={index}
-                    href={cleanHref}
-                    onClick={() => setActiveHash(cleanHref)}
-                    className={cn(
-                      "px-4 py-1.5 rounded-full text-sm transition-all duration-200",
-                      link.className
-                    )}
-                    style={{
-                      backgroundColor: isActive ? `${hoverColor}10` : 'transparent',
-                      color: isActive ? hoverColor : linkColor,
-                      fontWeight: isActive ? 500 : 400
-                    }}
-                    onMouseEnter={(e) => e.currentTarget.style.color = hoverColor}
-                    onMouseLeave={(e) => e.currentTarget.style.color = isActive ? hoverColor : linkColor}
-                  >
-                    {link.label}
-                  </a>
-                );
-              })
-            ) : (
-              <span className="px-4 py-1 text-sm opacity-50">Add links in editor</span>
-            )}
+          {/* LOGO - Stagger 1 */}
+          <div className={fadeDownAnim} style={{ transitionDelay: animationsDone ? '0ms' : '100ms' }}>
+            <a href={"/"} className={cn("relative flex items-center justify-start ", logo.className)}>
+              {logo.src ? (
+                <img
+                  src={logo.src}
+                  alt={logo.alt || "Business Logo"}
+                  className="w-40 h-12 max-w-full object-contain object-left transition-all" 
+                />
+              ) : (
+                <PawIcon className="h-11 w-11" style={{ color: data.cta?.bg }} />
+              )}
+            </a>
           </div>
 
-          {/* CTA BUTTON */}
-          <a 
-            href={data.cta?.href || "#"} 
-            className={cn("flex items-center gap-2.5 text-sm font-medium pl-5 pr-2 py-2 rounded-full cursor-pointer transition-transform hover:scale-105", data.cta?.className)}
-            style={{ backgroundColor: data.cta?.bg, color: data.cta?.text }}
-          >
-            {data.cta?.label || "Schedule"}
-            <span className="w-7 h-7 rounded-full bg-white/20 flex items-center justify-center">
-              <svg width="12" height="10" viewBox="0 0 12 10" fill="none">
-                <path d="M.6 4.602h10m-4-4 4 4-4 4" stroke={data.cta?.text || "#ffffff"} strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
-            </span>
-          </a>
+          {/* DYNAMIC NAVIGATION LINKS - Stagger 2 */}
+          <div className={fadeDownAnim} style={{ transitionDelay: animationsDone ? '0ms' : '200ms' }}>
+            <div 
+              className="flex items-center rounded-full px-1 py-1 gap-2 shadow-sm border bg-white"
+              style={{ backgroundColor: navBg, borderColor: hoverColor + '20' }}
+            >
+              {links.length > 0 ? (
+                links.map((link: any, index: number) => {
+                  const cleanHref = (link.href || "").trim();
+                  const isActive = cleanHref === "/" || cleanHref === ""
+                    ? (pathname === "/" && (!activeHash || activeHash === "#" || activeHash === "/"))
+                    : activeHash === cleanHref;
+
+                  return (
+                    <a
+                      key={index}
+                      href={cleanHref}
+                      onClick={() => setActiveHash(cleanHref)}
+                      className={cn(
+                        "px-4 py-1.5 rounded-full text-sm transition-all duration-200",
+                        link.className
+                      )}
+                      style={{
+                        backgroundColor: isActive ? `${hoverColor}10` : 'transparent',
+                        color: isActive ? hoverColor : linkColor,
+                        fontWeight: isActive ? 500 : 400
+                      }}
+                      onMouseEnter={(e) => e.currentTarget.style.color = hoverColor}
+                      onMouseLeave={(e) => e.currentTarget.style.color = isActive ? hoverColor : linkColor}
+                    >
+                      {link.label}
+                    </a>
+                  );
+                })
+              ) : (
+                <span className="px-4 py-1 text-sm opacity-50">Add links in editor</span>
+              )}
+            </div>
+          </div>
+
+          {/* CTA BUTTON - Stagger 3 */}
+          <div className={fadeDownAnim} style={{ transitionDelay: animationsDone ? '0ms' : '300ms' }}>
+            <a 
+              href={data.cta?.href || "#"} 
+              className={cn("flex items-center gap-2.5 text-sm font-medium pl-5 pr-2 py-2 rounded-full cursor-pointer transition-transform hover:scale-105", data.cta?.className)}
+              style={{ backgroundColor: data.cta?.bg, color: data.cta?.text }}
+            >
+              {data.cta?.label || "Schedule"}
+              <span className="w-7 h-7 rounded-full bg-white/20 flex items-center justify-center">
+                <svg width="12" height="10" viewBox="0 0 12 10" fill="none">
+                  <path d="M.6 4.602h10m-4-4 4 4-4 4" stroke={data.cta?.text || "#ffffff"} strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              </span>
+            </a>
+          </div>
+
         </div>
       </nav>
 
@@ -186,19 +214,28 @@ export default function Navbar({ data }: { data: any }) {
           backdropFilter: isScrolled ? 'blur(16px)' : 'none'
         }}
       >
-        <a href="/" className={cn("relative flex items-center ", logo.className)}>
-          {logo.src ? (
-            <img src={logo.src} alt={logo.alt || "Business Logo"} className="w-32 h-14 max-w-full object-contain object-left transition-all" />
-          ) : (
-            <PawIcon className="h-10 w-10" style={{ color: data.cta?.bg }} />
-          )}
-        </a>
+        <div className={fadeDownAnim} style={{ transitionDelay: animationsDone ? '0ms' : '100ms' }}>
+          <a href="/" className={cn("relative flex items-center ", logo.className)}>
+            {logo.src ? (
+              <img src={logo.src} alt={logo.alt || "Business Logo"} className="w-32 h-14 max-w-full object-contain object-left transition-all" />
+            ) : (
+              <PawIcon className="h-10 w-10" style={{ color: data.cta?.bg }} />
+            )}
+          </a>
+        </div>
       </div>
 
-      {/* MOBILE BOTTOM NAVIGATION */}
+      {/* MOBILE BOTTOM NAVIGATION - Slides up from the bottom */}
       <nav 
-        className="md:hidden fixed inset-x-0 bg-white bottom-4 mx-auto z-50 w-fit max-w-[95vw] border rounded-full flex items-center p-1.5 shadow-xl space-x-1"
-        style={{ backgroundColor: navBg, borderColor: hoverColor + '20' }}
+        className={cn(
+          "md:hidden fixed inset-x-0 bg-white bottom-4 mx-auto z-50 w-fit max-w-[95vw] border rounded-full flex items-center p-1.5 shadow-xl space-x-1",
+          fadeUpAnim
+        )}
+        style={{ 
+          backgroundColor: navBg, 
+          borderColor: hoverColor + '20',
+          transitionDelay: animationsDone ? '0ms' : '400ms' 
+        }}
       >
         {links.slice(0, 7).map((link: any, index: number) => {
           const cleanHref = (link.href || "").trim();

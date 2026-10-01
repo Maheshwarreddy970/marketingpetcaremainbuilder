@@ -9,15 +9,7 @@ export function CallToAction() {
     <div className="py-24 md:py-32">
       <div className="mx-auto px-6 md:px-0 ">
         <div className="relative overflow-hidden rounded-[35px] border border-[#E6E6E6] p-6 md:p-12">
-          {/* dotted background, same pattern as hero section */}
-          <div
-            className="absolute -z-10 top-0 left-0 w-full h-full"
-            style={{
-              backgroundImage:
-                "radial-gradient(circle, #E6E6E6 1px, transparent 1px)",
-              backgroundSize: "10px 10px",
-            }}
-          />
+       
 
           <div className="relative flex flex-col justify-center md:flex-row md:items-center gap-10 md:gap-14">
             <div className="flex-1 text-center sm:text-start ">

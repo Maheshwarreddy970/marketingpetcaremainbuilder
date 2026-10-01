@@ -4,14 +4,7 @@ import { FOOTER_CONTENT } from './data'
 export default function Footer() {
   return (
     <footer className="relative mb-11 flex min-h-[500px] w-full flex-col justify-between overflow-hidden rounded-[28px] border border-[#E6E6E6] p-4 pb-0 sm:rounded-[35px] md:p-8 md:pb-0 lg:p-12 lg:pb-0">
-      {/* Background Dot Grid */}
-      <div
-        className="absolute left-0 top-0 -z-20 h-full w-full"
-        style={{
-          backgroundImage: 'radial-gradient(circle, #e6e6e6 1px, transparent 1px)',
-          backgroundSize: '10px 10px',
-        }}
-      />
+      
 
       {/* Decorative Left Graphic */}
       <div className="pointer-events-none absolute -bottom-36 -left-32 -z-10 rotate-[20deg] scale-50 opacity-60 sm:scale-75 md:-bottom-40 md:-left-20 md:z-0 md:opacity-100 [&>*]:scale-100">
