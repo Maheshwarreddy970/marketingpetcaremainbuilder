@@ -10,6 +10,9 @@ export async function submitContactFormAction(formData: FormData) {
   const message = formData.get("message") as string;
   const slug = formData.get("slug") as string;
 
+
+
+  
   // Debugging log
   console.log("Contact form submission received:", { name, email, phone, message, slug });
 
