@@ -9,7 +9,7 @@ const defaultWebsiteOneData = {
   theme: { primaryColor: "#a35c38" },
   navbar: {
     section: { bg: "#ffffff", className: "" },
-    logo: { src: `/demowebsite/logo.avif`, alt: "petcare Logo", className: "" },
+    logo: { src: `https://nexpetcare.com/demowebsite/logo.avif`, alt: "petcare Logo", className: "" },
     styling: { linkColor: "#625b5b", linkHoverColor: "#1e0c05" },
     cta: { label: "Schedule a visit", href: "#contact", bg: "#a35c38", text: "#ffffff", className: "" },
     links: [
@@ -25,8 +25,8 @@ const defaultWebsiteOneData = {
     section: { bg: "#fffff", className: "" },
     heading: { text: "We `care` for your pet like our baby", color: "#1e0c05", className: "" },
     description: { text: "Assure clients they're completely safe with a trusted, results-driven experience.", color: "#1e0c05", className: "" },
-    image: { src: `/demowebsite/homepageimage.avif`, className: "", imagecolor: "#a35c38" },
-    mobileImage: { src: `/demowebsite/heropageimagesmallscreen.avif`, className: "", imagecolor: "#a35c38" },
+    image: { src: `https://nexpetcare.com/demowebsite/homepageimage.avif`, className: "", imagecolor: "#a35c38" },
+    mobileImage: { src: `https://nexpetcare.com/demowebsite/heropageimagesmallscreen.avif`, className: "", imagecolor: "#a35c38" },
 
     cta: { label: "Book A Schedule", href: "#contact", bg: "#a35c38", text: "#ffffff", className: "" },
     socialProof: { stars: 5, starColor: "#8c863a", text: "Over 400 Happy Pets Are Enjoyed", textColor: "#1e0c05", className: "" }
@@ -42,12 +42,12 @@ const defaultWebsiteOneData = {
     heading: { text: "Happy Pet `Smiles`", color: "#1e0c05", className: "" },
     description: { text: "Check out a many of the pups and kitties who visited our clinic.", color: "#625b5b", className: "" },
     items: [
-      { image: `/demowebsite/1.avif`, alt: "Happy Pet 1", className: "" },
-      { image: `/demowebsite/2.avif`, alt: "Happy Pet 2", className: "" },
-      { image: `/demowebsite/3.avif`, alt: "Happy Pet 3", className: "" },
-      { image: `/demowebsite/4.avif`, alt: "Happy Pet 4", className: "" },
-      { image: `/demowebsite/5.avif`, alt: "Happy Pet 5", className: "" },
-      { image: `/demowebsite/6.avif`, alt: "Happy Pet 6", className: "" }
+      { image: `https://nexpetcare.com/demowebsite/1.avif`, alt: "Happy Pet 1", className: "" },
+      { image: `https://nexpetcare.com/demowebsite/2.avif`, alt: "Happy Pet 2", className: "" },
+      { image: `https://nexpetcare.com/demowebsite/3.avif`, alt: "Happy Pet 3", className: "" },
+      { image: `https://nexpetcare.com/demowebsite/4.avif`, alt: "Happy Pet 4", className: "" },
+      { image: `https://nexpetcare.com/demowebsite/5.avif`, alt: "Happy Pet 5", className: "" },
+      { image: `https://nexpetcare.com/demowebsite/6.avif`, alt: "Happy Pet 6", className: "" }
     ]
   },
   gallery: {
@@ -56,16 +56,16 @@ const defaultWebsiteOneData = {
     description: { text: "Every photo shows care and skill. Browse our gallery to see the petcare difference — one happy pet at a time.", color: "#625b5b", className: "" },
     styling: { arrowColor: "#8c863a", badgeBg: "#faf3ec", badgeText: "#1e0c05", className: "" },
     items: [
-      { id: 1, before: `/demowebsite/b1.avif`, after: `/demowebsite/a1.avif`, alt: "Golden Retriever grooming", className: "" },
-      { id: 2, before: `/demowebsite/b2.avif`, after: `/demowebsite/a2.avif`, alt: "Long-haired cat grooming", className: "" },
-      { id: 3, before: `/demowebsite/b3.avif`, after: `/demowebsite/a3.avif`, alt: "Poodle grooming", className: "" }
+      { id: 1, before: `https://nexpetcare.comhttps://nexpetcare.com/demowebsite/b1.avif`, after: `https://nexpetcare.comhttps://nexpetcare.com/demowebsite/a1.avif`, alt: "Golden Retriever grooming", className: "" },
+      { id: 2, before: `https://nexpetcare.comhttps://nexpetcare.com/demowebsite/b2.avif`, after: `https://nexpetcare.comhttps://nexpetcare.com/demowebsite/a2.avif`, alt: "Long-haired cat grooming", className: "" },
+      { id: 3, before: `https://nexpetcare.comhttps://nexpetcare.com/demowebsite/b3.avif`, after: `https://nexpetcare.comhttps://nexpetcare.com/demowebsite/a3.avif`, alt: "Poodle grooming", className: "" }
     ]
   },
   about: {
     section: { bg: "#fffff", className: "" },
     heading: { text: "We care for `pets` like they're our own", color: "#1e0c05", className: "" },
     description: { text: "petcare started with a simple idea — every pet deserves loads of love, patience, and expert care. From our very first client to our thousandth, we've always put pets first.", color: "#625b5b", className: "" },
-    image: { src: `/demowebsite/about.avif`, className: "", imagecolor: "#a35c38" },
+    image: { src: `https://nexpetcare.com/demowebsite/about.avif`, className: "", imagecolor: "#a35c38" },
     featuresList: { features: ["8+ years of professional pet care experience", "1,200+ happy pets served", "Trusted by families across the city"], featureColor: "#1e0c05", featureIconColor: "#8c863a", className: "" },
     cta: { label: "About petcare", href: "#", bg: "#a35c38", text: "#ffffff", className: "" }
   },
@@ -88,9 +88,9 @@ const defaultWebsiteOneData = {
     description: { text: "At petcare, we truly value your time and your pet's comfort. Our process ensures a smooth experience.", color: "#625b5b", className: "" },
     styling: { lineColor: "#a35c38", className: "" },
     steps: [
-      { id: "01", title: "Book your appointment", titleColor: "#1e0c05", description: "Pick the service you want and book a convenient time that suits you—online anytime, day or night.", descColor: "#625b5b", image: `/demowebsite/step1.avif`, className: "" },
-      { id: "02", title: "Drop off your pet", titleColor: "#1e0c05", description: "Drop by our friendly studio with your pet at your appointment time & say hi to your groomer.", descColor: "#625b5b", image: `/demowebsite/step2.avif`, className: "" },
-      { id: "03", title: "Pick up a happy pet", titleColor: "#1e0c05", description: "Grab your freshly groomed, happy pup and enjoy the awesome, lasting results of our expert care!", descColor: "#625b5b", image: `/demowebsite/step3.avif`, className: "" }
+      { id: "01", title: "Book your appointment", titleColor: "#1e0c05", description: "Pick the service you want and book a convenient time that suits you—online anytime, day or night.", descColor: "#625b5b", image: `https://nexpetcare.com/demowebsite/step1.avif`, className: "" },
+      { id: "02", title: "Drop off your pet", titleColor: "#1e0c05", description: "Drop by our friendly studio with your pet at your appointment time & say hi to your groomer.", descColor: "#625b5b", image: `https://nexpetcare.com/demowebsite/step2.avif`, className: "" },
+      { id: "03", title: "Pick up a happy pet", titleColor: "#1e0c05", description: "Grab your freshly groomed, happy pup and enjoy the awesome, lasting results of our expert care!", descColor: "#625b5b", image: `https://nexpetcare.com/demowebsite/step3.avif`, className: "" }
     ]
   },
   comparison: {
@@ -107,15 +107,15 @@ const defaultWebsiteOneData = {
     description: { text: "Our rating truly speaks for itself — but the words behind it speak even louder and clearer, expressing our commitment.", color: "#625b5b", className: "" },
     columns: {
       col1: [
-        { type: "review", name: "David Chen", role: "Dog Owner", text: "“I was kinda nervous about taking Luna for grooming, but petcare totally relaxed her and made the experience enjoyable.”", avatar: `/demowebsite/person1.webp`, bg: "#faf3ec", textColor: "#625b5b", titleColor: "#1e0c05", starColor: "#8c863a" },
+        { type: "review", name: "David Chen", role: "Dog Owner", text: "“I was kinda nervous about taking Luna for grooming, but petcare totally relaxed her and made the experience enjoyable.”", avatar: `https://nexpetcare.com/demowebsite/person1.webp`, bg: "#faf3ec", textColor: "#625b5b", titleColor: "#1e0c05", starColor: "#8c863a" },
         { type: "stat-numeric", score: "4.96", scale: "/5", subtext: "5-Star Reviews: 500+", bg: "#a35c38", scoreColor: "#ffffff", textColor: "#ffffff", starColor: "#ffffff" }
       ],
       col2: [
-        { type: "review", name: "James Thornton", role: "Cat Owner", text: "“petcare truly transformed my golden retriever, Max! He looked amazing, was happy the whole time, and their exceptional care and professionalism far surpass any other groomers I've tried.”", avatar: `/demowebsite/person2.webp`, bg: "#faf3ec", textColor: "#625b5b", titleColor: "#1e0c05", starColor: "#8c863a" }
+        { type: "review", name: "James Thornton", role: "Cat Owner", text: "“petcare truly transformed my golden retriever, Max! He looked amazing, was happy the whole time, and their exceptional care and professionalism far surpass any other groomers I've tried.”", avatar: `https://nexpetcare.com/demowebsite/person2.webp`, bg: "#faf3ec", textColor: "#625b5b", titleColor: "#1e0c05", starColor: "#8c863a" }
       ],
       col3: [
-        { type: "stat-image", image: `/demowebsite/reviewcard.avif`, heading: "1200+", subtext: "Happy Pets Delivered Quarterly", bg: "#a35c38", textColor: "#ffffff", iconColor: "#ffffff" },
-        { type: "review", name: "Marcus Williams", role: "Cat Owner", text: "“As someone who owns three dogs I need a groomer I can fully trust.”", avatar: `/demowebsite/person3.webp`, bg: "#faf3ec", textColor: "#625b5b", titleColor: "#1e0c05", starColor: "#8c863a" }
+        { type: "stat-image", image: `https://nexpetcare.com/demowebsite/reviewcard.avif`, heading: "1200+", subtext: "Happy Pets Delivered Quarterly", bg: "#a35c38", textColor: "#ffffff", iconColor: "#ffffff" },
+        { type: "review", name: "Marcus Williams", role: "Cat Owner", text: "“As someone who owns three dogs I need a groomer I can fully trust.”", avatar: `https://nexpetcare.com/demowebsite/person3.webp`, bg: "#faf3ec", textColor: "#625b5b", titleColor: "#1e0c05", starColor: "#8c863a" }
       ]
     }
   },
@@ -125,9 +125,9 @@ const defaultWebsiteOneData = {
     description: { text: "Awesome results come from a passionate team of dedicated animal lovers at petcare.", color: "#625b5b", className: "" },
     styling: { cardBg: "#ffffff", cardTitle: "#1e0c05", cardDateBg: "#faf3ec", cardDateText: "#625b5b", className: "" },
     items: [
-      { id: 1, title: "5 Signs your cat needs grooming help", date: "Mar 12, 2026", image: `/demowebsite/blog1.avif`, className: "" },
-      { id: 2, title: "How often do usually groom your dog?", date: "Apr 5, 2026", image: `/demowebsite/blog2.avif`, className: "" },
-      { id: 3, title: "Keeping your pet calm during grooming", date: "May 3, 2026", image: `/demowebsite/blog3.avif`, className: "" }
+      { id: 1, title: "5 Signs your cat needs grooming help", date: "Mar 12, 2026", image: `https://nexpetcare.com/demowebsite/blog1.avif`, className: "" },
+      { id: 2, title: "How often do usually groom your dog?", date: "Apr 5, 2026", image: `https://nexpetcare.com/demowebsite/blog2.avif`, className: "" },
+      { id: 3, title: "Keeping your pet calm during grooming", date: "May 3, 2026", image: `https://nexpetcare.com/demowebsite/blog3.avif`, className: "" }
     ]
   },
   faq: {
@@ -151,12 +151,12 @@ const defaultWebsiteOneData = {
     section: { bg: "#faf3ec", className: "" },
     heading: { text: "`Book` a session & feel the `difference` today", color: "#1e0c05", className: "" },
     description: { text: "Nothing beats seeing your happy, freshly groomed pet run to you.", color: "#625b5b", className: "" },
-    image: { src: `/demowebsite/cta.avif`, className: "" },
+    image: { src: `https://nexpetcare.com/demowebsite/cta.avif`, className: "" },
     cta: { label: "Book A Schedule", href: "#contact", bg: "#a35c38", text: "#ffffff", className: "" }
   },
   footer: {
     section: { bg: "#fdfdfd", className: "" },
-    logo: { src: `/demowebsite/logo.avif`, alt: "petcare Logo", className: "" },
+    logo: { src: `https://nexpetcare.com/demowebsite/logo.avif`, alt: "petcare Logo", className: "" },
     styling: { textColor: "#1e0c05", mutedColor: "#625b5b", iconBg: "#847e53", iconText: "#ffffff" },
     info: {
       address: "2458 Oceanview Drive, Sunnyvale, CA 94085.",

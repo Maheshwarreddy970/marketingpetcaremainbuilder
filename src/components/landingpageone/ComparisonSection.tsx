@@ -61,7 +61,7 @@ export default function ComparisonSection({ data }: { data: any }) {
                     {!isSingleColumn && (
                         <>
                             {/* VS BADGE */}
-                            <div className={cn("absolute md:mt-0 16 left-1/2 ml-9 -rotate-10 top-1/2 -translate-x-1/2 -translate-y-1/2 z-20 flex items-center justify-center", data.vsBadge?.className)}>
+                            <div className={cn("absolute md:mt-0 16 left-1/2 -rotate-10 top-1/2 -translate-x-1/2 -translate-y-1/2 z-20 flex items-center justify-center", data.vsBadge?.className)}>
                                 <div className="rounded-full w-[60px] h-[60px] -rotate-16 md:w-[64px] md:h-[64px] border-[4px] flex items-center justify-center shadow-md" style={{ backgroundColor: data.vsBadge?.bg || data.vsBg, color: data.vsBadge?.text || data.vsText, borderColor: data.section?.bg || data.bg || '#ffffff' }}>
                                     <span className="font-medium text-[20px] md:text-[22px] tracking-[-1px] uppercase">vs</span>
                                 </div>
