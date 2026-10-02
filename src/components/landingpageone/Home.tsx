@@ -140,7 +140,7 @@ export default function HeroSection({ data }: { data: any }) {
                                 as="h1"
                                 text={data.heading?.text || data.heading}
                                 className={cn(
-                                    "text-5xl font-semibold md:font-normal md:text-7xl leading-[1.1] tracking-[-2px] lg:tracking-[-5px]",
+                                    "text-4xl font-semibold md:font-normal md:text-7xl leading-[1.1] tracking-[-2px] lg:tracking-[-5px]",
                                     data.heading?.className
                                 )}
                                 style={{ color: data.heading?.color || data.headingColor }}
