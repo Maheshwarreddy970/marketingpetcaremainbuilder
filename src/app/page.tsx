@@ -20,7 +20,7 @@ export default function Home() {
         <UsVsThemComparison></UsVsThemComparison>
         <Availability></Availability>
         <Pricing></Pricing>
-        <HowItWorksDemo></HowItWorksDemo>
+        {/* <HowItWorksDemo></HowItWorksDemo> */}
         <Faq></Faq>
         <CallToAction></CallToAction>
         <Footer></Footer>

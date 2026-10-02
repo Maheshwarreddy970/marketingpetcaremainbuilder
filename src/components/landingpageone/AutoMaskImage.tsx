@@ -10,7 +10,7 @@ type Props = {
     className?: string;
     imgClassName?: string;
     alt?: string;
-    onReady?: () => void; // <-- ADDED: Tells parent when loading & math is 100% done
+    onReady?: () => void;
 };
 
 function getMaskUrl(url: string) {
@@ -20,16 +20,26 @@ function getMaskUrl(url: string) {
     return url.substring(0, lastDot) + "mask" + url.substring(lastDot);
 }
 
+// 🔥 ADDED SAFETY: Prevents crash if the color is missing or invalid
 function hexToRgb(hex: string): [number, number, number] {
+    if (!hex || typeof hex !== 'string') return [0, 0, 0];
+    
     let h = hex.trim().replace("#", "");
     if (h.length === 3) h = h.split("").map((c) => c + c).join("");
+    
     const n = parseInt(h, 16);
+    if (isNaN(n)) return [0, 0, 0]; // Fallback to black if invalid
+    
     return [(n >> 16) & 255, (n >> 8) & 255, n & 255].map((v) => v / 255) as [number, number, number];
 }
 
 function load(url: string): Promise<HTMLImageElement> {
     return new Promise((res, rej) => {
         const i = new window.Image();
+        
+        // 🔥 THE FIX: This allows the canvas to safely read pixels from external URLs!
+        i.crossOrigin = "anonymous";
+        
         i.onload = () => res(i);
         i.onerror = rej;
         i.src = url;
@@ -196,11 +206,13 @@ export default function AutoMaskImage({
 
                 if (!dead) {
                     setStatus("ready");
-                    onReady?.(); // <--- Trigger animation in HeroSection
+                    onReady?.(); 
                 }
 
             } catch (err) {
+                // If CORS blocks it or image is completely broken
                 if (!dead) {
+                    console.error("AutoMaskImage failed:", err);
                     setStatus("no-mask");
                     onReady?.();
                 }
@@ -220,6 +232,8 @@ export default function AutoMaskImage({
             <img 
                 src={src} 
                 alt={alt} 
+                // Add crossOrigin to the actual IMG tag as well to prevent cache-tainting
+                crossOrigin="anonymous" 
                 className={cn(
                     "w-full h-full block transition-opacity duration-[600ms] ease-out", 
                     status === "loading" ? "opacity-0 scale-105" : "opacity-100 scale-100",
