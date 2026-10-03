@@ -54,8 +54,7 @@ const CardRenderer = ({ card }: { card: any }) => {
             >                {card.image && (
                 <img src={card.image} alt={card.subtext || 'Stat Image'} className="absolute inset-0 w-full h-full object-cover opacity-70 transition-transform duration-700 group-hover:scale-105 z-0" />
             )}
-                <div className="absolute inset-0 flex flex-col items-center justify-center text-center p-6 z-10">
-                    <Smile className="w-12 h-12 mb-4" strokeWidth={1.5} style={{ color: card.iconColor || '#ffffff' }} />
+                <div className="absolute mt-20 inset-0 flex flex-col items-center justify-center text-center p-6 z-10">
                     <h3 className="font-medium text-[40px] tracking-tight mb-1" style={{ color: card.textColor || '#ffffff' }}>{card.heading || '1200+'}</h3>
                     <p className="text-[16px] font-medium" style={{ color: card.textColor || '#ffffff' }}>{card.subtext || 'Happy Pets Delivered'}</p>
                 </div>
