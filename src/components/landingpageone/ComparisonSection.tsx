@@ -50,7 +50,7 @@ export default function ComparisonSection({ data }: { data: any }) {
                                     "flex items-center gap-4",
                                     isSingleColumn ? "py-[14px]" : "py-[18px] border-b border-white/20 last:border-b-0"
                                 )}>
-                                    <CheckCircle className="w-5 h-5 md:w-6 md:h-6 flex-shrink-0 stroke-[2]" style={{ color: data.leftColumn?.iconColor || data.leftIcon }} />
+                                    <XCircle className="w-5 h-5 flex-shrink-0 stroke-[1.5]" style={{ color: data.rightColumn?.iconColor || data.rightIcon }} />
                                     <span className="text-[16px] md:text-[18px] font-medium leading-[1.6] opacity-90" style={{ color: data.leftColumn?.textColor || data.leftText }}>{item}</span>
                                 </li>
                             ))}
@@ -73,7 +73,7 @@ export default function ComparisonSection({ data }: { data: any }) {
                                 <ul className="flex flex-col">
                                     {data.rightColumn?.offers?.map((item: string, index: number) => (
                                         <li key={index} className="flex items-center gap-4 py-[18px] border-b border-gray-200/50 last:border-b-0">
-                                            <XCircle className="w-5 h-5 flex-shrink-0 stroke-[1.5]" style={{ color: data.rightColumn?.iconColor || data.rightIcon }} />
+                                            <CheckCircle className="w-5 h-5 md:w-6 md:h-6 flex-shrink-0 stroke-[2]" style={{ color: data.leftColumn?.iconColor || data.leftIcon }} />
                                             <span className="text-[15px] md:text-[16px] leading-[1.6]" style={{ color: data.rightColumn?.textColor || data.rightText }}>{item}</span>
                                         </li>
                                     ))}
