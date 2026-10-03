@@ -4,7 +4,7 @@ import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import {
   LayoutTemplate, ExternalLink, Loader2, Globe, Server,
-  Lock, RefreshCw, Download, Settings
+  Lock, RefreshCw, Download, Settings, Sparkles
 } from "lucide-react";
 import merge from "lodash/merge";
 import WebsiteOne from "@/components/templates/WebsiteOne";
@@ -205,8 +205,56 @@ export default function ClientDashboard({ name, dbData }: DashboardProps) {
         </div>
       )}
 
+      {/* 🔥 RECENTLY LAUNCHED INSPIRATION SHOWCASE */}
+      <div className="w-full max-w-7xl mx-auto mt-10">
+        <div className="flex items-center gap-2 mb-4 px-1">
+          <Sparkles className="text-yellow-500 w-4 h-4" />
+          <h2 className="text-xs font-bold text-gray-500 uppercase tracking-widest">Recently Launched on NexPet Care</h2>
+        </div>
+        
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+          {/* Showcase Client 1 */}
+          <a 
+            href="https://www.doggieteethcleaning.ca/" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            className="group flex items-center p-4 bg-white border border-gray-200 rounded-2xl shadow-sm hover:shadow-md hover:border-blue-200 transition-all duration-300"
+          >
+            <div className="w-14 h-14 rounded-xl bg-gray-50 border border-gray-100 flex items-center justify-center p-2 overflow-hidden shrink-0">
+              <img src="/client1.avif" alt="Doggie Teeth Cleaning" className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-300" />
+            </div>
+            <div className="ml-4 flex-1">
+              <h3 className="font-bold text-gray-900 group-hover:text-blue-600 transition-colors text-sm">The Dog & Cat Teeth Cleaning Boutique</h3>
+              <p className="text-xs text-gray-500 mt-0.5">doggieteethcleaning.ca</p>
+            </div>
+            <div className="w-8 h-8 rounded-full bg-gray-50 flex items-center justify-center group-hover:bg-blue-50 transition-colors">
+              <ExternalLink size={14} className="text-gray-400 group-hover:text-blue-600 transition-colors" />
+            </div>
+          </a>
+
+          {/* Showcase Client 2 */}
+          <a 
+            href="https://pettowngrooming.com/" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            className="group flex items-center p-4 bg-white border border-gray-200 rounded-2xl shadow-sm hover:shadow-md hover:border-blue-200 transition-all duration-300"
+          >
+            <div className="w-14 h-14 rounded-xl bg-gray-50 border border-gray-100 flex items-center justify-center p-2 overflow-hidden shrink-0">
+              <img src="/client2.webp" alt="Pet Town Grooming" className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-300" />
+            </div>
+            <div className="ml-4 flex-1">
+              <h3 className="font-bold text-gray-900 group-hover:text-blue-600 transition-colors text-sm">Pet Town Grooming</h3>
+              <p className="text-xs text-gray-500 mt-0.5">pettowngrooming.com</p>
+            </div>
+            <div className="w-8 h-8 rounded-full bg-gray-50 flex items-center justify-center group-hover:bg-blue-50 transition-colors">
+              <ExternalLink size={14} className="text-gray-400 group-hover:text-blue-600 transition-colors" />
+            </div>
+          </a>
+        </div>
+      </div>
+
       {/* Auto-scrolling Template Preview - ALWAYS VISIBLE */}
-      <div className="w-full max-w-7xl mx-auto mt-10 flex flex-col bg-white rounded-2xl border border-gray-300 overflow-hidden ring-1 ring-black/5">
+      <div className="w-full max-w-7xl mx-auto mt-8 flex flex-col bg-white rounded-2xl border border-gray-300 overflow-hidden ring-1 ring-black/5">
         <div className="h-14 bg-gray-100/80 border-b border-gray-200 flex items-center px-4 justify-between select-none shrink-0 z-10 relative">
           <div className="flex gap-2 w-20">
             <div className="w-3 h-3 rounded-full bg-[#ff5f56] border border-[#e0443e]" />
