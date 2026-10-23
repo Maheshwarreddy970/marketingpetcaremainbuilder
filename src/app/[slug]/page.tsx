@@ -6,9 +6,9 @@ const TEMPLATES: Record<string, React.FC<any>> = {
   websiteOne: WebsiteOne,
 };
 
-// 🔥 OPTIMIZATION: No timed revalidate. 
-// Next.js will cache this indefinitely until your server action calls `revalidatePath` when a client saves.
-// This is the absolute best setup for a multi-tenant website builder.
+// 🔥 OPTIMIZATION: Cache the page indefinitely on Vercel's global CDN.
+// Revalidation will be handled on-demand by `revalidatePath` inside `saveWebsiteSettingsAction`.
+export const revalidate = false; // Note: You can use false or leave this out to rely on on-demand revalidation. Next.js 14+ uses false to mean "do not revalidate on a timer".
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
@@ -115,6 +115,7 @@ export default async function LiveTenantPage({ params }: { params: Promise<{ slu
   const socialsObj = templateData?.footer?.socials || {};
   const sameAsLinks = Object.values(socialsObj).filter((url: any) => url && url !== "#");
 
+  // The missing part was here!
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
@@ -149,7 +150,7 @@ export default async function LiveTenantPage({ params }: { params: Promise<{ slu
 
         <TemplateComponent data={templateData} slug={slug} />
         
-        {/* 🔥 10-Second Eye-Catching Dashboard Popup (Pure CSS, caches perfectly) */}
+        {/* 🔥 15-Second Eye-Catching Dashboard Popup (Pure CSS, caches perfectly) */}
         <a
           href={`http://nexpetcare.com/dashboard/${slug}`}
           className="dashboard-popup fixed bottom-6 right-6 z-[9999] bg-white border border-gray-200 px-2 py-2 pr-5 rounded-full shadow-2xl flex items-center gap-3 hover:bg-gray-50 hover:border-[#2462EA]/40 transition-all opacity-0 pointer-events-none group"
@@ -179,8 +180,8 @@ export default async function LiveTenantPage({ params }: { params: Promise<{ slu
             100% { transform: scale(1); opacity: 1; pointer-events: auto; }
           }
           .dashboard-popup {
-            /* 10 second delay, infinite heartbeat pulse after it pops in */
-            animation: popInAndPulse 4s cubic-bezier(0.16, 1, 0.3, 1) 10s infinite forwards;
+            /* 15 second delay, infinite heartbeat pulse after it pops in */
+            animation: popInAndPulse 4s cubic-bezier(0.16, 1, 0.3, 1) 15s infinite forwards;
           }
         `}} />
 
