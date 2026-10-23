@@ -6,9 +6,9 @@ const TEMPLATES: Record<string, React.FC<any>> = {
   websiteOne: WebsiteOne,
 };
 
-// 🔥 OPTIMIZATION 1: Cache the page on Vercel's global CDN for 1 hour.
-// This single line drops your "Fluid Active CPU" usage by 95%+.
-export const revalidate = 3600; 
+// 🔥 OPTIMIZATION: No timed revalidate. 
+// Next.js will cache this indefinitely until your server action calls `revalidatePath` when a client saves.
+// This is the absolute best setup for a multi-tenant website builder.
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
@@ -99,9 +99,7 @@ export default async function LiveTenantPage({ params }: { params: Promise<{ slu
   const settings = data.settings || {};
 
   // ==========================================
-  // 🔥 OPTIMIZATION 2: Removed `headers()`
-  // Because this file is [slug]/page.tsx, it ONLY handles the home page ('/').
-  // We can safely hardcode '/' for the redirect check and save the CPU hit!
+  // 🔥 Redirects check logic (without headers()!)
   // ==========================================
   if (settings.redirects && settings.redirects.length > 0) {
       const match = settings.redirects.find((r: any) => r.oldPath === '/');
