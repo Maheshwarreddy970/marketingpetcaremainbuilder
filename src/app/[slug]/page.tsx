@@ -180,8 +180,8 @@ export default async function LiveTenantPage({ params }: { params: Promise<{ slu
             100% { transform: scale(1); opacity: 1; pointer-events: auto; }
           }
           .dashboard-popup {
-            /* 15 second delay, infinite heartbeat pulse after it pops in */
-            animation: popInAndPulse 4s cubic-bezier(0.16, 1, 0.3, 1) 15s infinite forwards;
+            /* 5 second delay, infinite heartbeat pulse after it pops in */
+            animation: popInAndPulse 4s cubic-bezier(0.16, 1, 0.3, 1) 5s infinite forwards;
           }
         `}} />
 
