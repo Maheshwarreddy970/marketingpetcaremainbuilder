@@ -4,7 +4,7 @@ import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import {
   LayoutTemplate, ExternalLink, Loader2, Globe, Server,
-  Lock, RefreshCw, Download, Settings, Sparkles
+  Lock, RefreshCw, Download, Sparkles, Quote, Star, BadgeCheck
 } from "lucide-react";
 import merge from "lodash/merge";
 import WebsiteOne from "@/components/templates/WebsiteOne";
@@ -22,6 +22,19 @@ const DEPLOY_STEPS = [
   "Mapping subdomain routing...",
   "Deploying to Global Network..."
 ];
+
+// Client review shown in the showcase section.
+// Reviewer is a faceless brand, so we show the business logo + name instead of a personal photo.
+const TESTIMONIAL = {
+  quote:
+    "Maheshwar and his team at Nexpetcare were wonderful. Not only did they accommodate my requests and even went ahead to give me various demo websites, adjusting to our business needs and completely understanding us. One can tell they had our best interest in mind and it felt more personal than the standard ready to go websites platform. I highly recommend Nexpetcare 100%",
+  highlight: "it felt more personal than the standard ready to go websites platform",
+  business: "Pet Town Grooming",
+  url: "https://pettowngrooming.com/",
+  domain: "pettowngrooming.com",
+  logo: "/client2.webp",
+  rating: 5,
+};
 
 export default function ClientDashboard({ name, dbData }: DashboardProps) {
   const paid = dbData?.paid;
@@ -117,6 +130,9 @@ export default function ClientDashboard({ name, dbData }: DashboardProps) {
     setDownloading(false);
   };
 
+  // Splits the quote so the key phrase can be highlighted
+  const [beforeHighlight, afterHighlight] = TESTIMONIAL.quote.split(TESTIMONIAL.highlight);
+
   return (
     <div className="min-h-screen bg-[#f8f9fa] text-black p-6 md:p-10 font-sans flex flex-col items-center" suppressHydrationWarning>
 
@@ -211,13 +227,13 @@ export default function ClientDashboard({ name, dbData }: DashboardProps) {
           <Sparkles className="text-yellow-500 w-4 h-4" />
           <h2 className="text-xs font-bold text-gray-500 uppercase tracking-widest">Recently Launched on NexPet Care</h2>
         </div>
-        
+
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
           {/* Showcase Client 1 */}
-          <a 
-            href="https://www.doggieteethcleaning.ca/" 
-            target="_blank" 
-            rel="noopener noreferrer" 
+          <a
+            href="https://www.doggieteethcleaning.ca/"
+            target="_blank"
+            rel="noopener noreferrer"
             className="group flex items-center p-4 bg-white border border-gray-200 rounded-2xl shadow-sm hover:shadow-md hover:border-blue-200 transition-all duration-300"
           >
             <div className="w-14 h-14 rounded-xl bg-gray-50 border border-gray-100 flex items-center justify-center p-2 overflow-hidden shrink-0">
@@ -233,10 +249,10 @@ export default function ClientDashboard({ name, dbData }: DashboardProps) {
           </a>
 
           {/* Showcase Client 2 */}
-          <a 
-            href="https://pettowngrooming.com/" 
-            target="_blank" 
-            rel="noopener noreferrer" 
+          <a
+            href="https://pettowngrooming.com/"
+            target="_blank"
+            rel="noopener noreferrer"
             className="group flex items-center p-4 bg-white border border-gray-200 rounded-2xl shadow-sm hover:shadow-md hover:border-blue-200 transition-all duration-300"
           >
             <div className="w-14 h-14 rounded-xl bg-gray-50 border border-gray-100 flex items-center justify-center p-2 overflow-hidden shrink-0">
@@ -251,6 +267,65 @@ export default function ClientDashboard({ name, dbData }: DashboardProps) {
             </div>
           </a>
         </div>
+
+        {/* ⭐ CLIENT REVIEW */}
+        <figure className="relative mt-5 overflow-hidden bg-white border border-gray-200 rounded-2xl shadow-sm p-6 md:p-8">
+          {/* Decorative oversized quote mark */}
+          <Quote
+            aria-hidden="true"
+            className="absolute -top-2 right-6 w-24 h-24 text-blue-50 fill-blue-50 rotate-180 pointer-events-none"
+          />
+
+          <div className="relative flex flex-col md:flex-row md:items-start gap-6 md:gap-10">
+            {/* Left: rating + source */}
+            <div className="md:w-56 shrink-0 flex md:flex-col items-center md:items-start gap-4">
+              <div className="w-16 h-16 rounded-2xl bg-gray-50 border border-gray-100 flex items-center justify-center p-2 overflow-hidden">
+                <img
+                  src={TESTIMONIAL.logo}
+                  alt={TESTIMONIAL.business}
+                  className="w-full h-full object-contain"
+                />
+              </div>
+
+              <div>
+                <div
+                  className="flex items-center gap-0.5"
+                  role="img"
+                  aria-label={`${TESTIMONIAL.rating} out of 5 stars`}
+                >
+                  {Array.from({ length: TESTIMONIAL.rating }).map((_, i) => (
+                    <Star key={i} size={16} className="text-yellow-400 fill-yellow-400" />
+                  ))}
+                </div>
+                <figcaption className="mt-2">
+                  <p className="font-bold text-gray-900 text-sm flex items-center gap-1.5">
+                    {TESTIMONIAL.business}
+                    <BadgeCheck size={15} className="text-blue-600" aria-label="Verified client" />
+                  </p>
+                  <a
+                    href={TESTIMONIAL.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-xs text-gray-500 hover:text-blue-600 transition-colors"
+                  >
+                    {TESTIMONIAL.domain}
+                  </a>
+                </figcaption>
+              </div>
+            </div>
+
+            {/* Right: the quote */}
+            <blockquote className="flex-1 text-gray-700 text-[15px] md:text-base leading-relaxed">
+              <p>
+                &ldquo;{beforeHighlight}
+                <mark className="bg-blue-50 text-blue-900 font-semibold px-1 rounded">
+                  {TESTIMONIAL.highlight}
+                </mark>
+                {afterHighlight}&rdquo;
+              </p>
+            </blockquote>
+          </div>
+        </figure>
       </div>
 
       {/* Auto-scrolling Template Preview - ALWAYS VISIBLE */}
