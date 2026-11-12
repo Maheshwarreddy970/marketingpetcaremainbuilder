@@ -19,8 +19,8 @@ interface MapProps {
 
 export function WorldMap({
   dots = [],
-  lineColor = "#0553fc",
-  mapDotColor = "#a3a3a380", 
+  lineColor = "#091d42",
+  mapDotColor = "#a3a3a380",
   mapBackgroundColor = "transparent",
 }: MapProps) {
   const svgMap = useMemo(() => {
@@ -137,7 +137,7 @@ export function WorldMap({
 export default function WorldMapDemo() {
   return (
     <div className=" bg-white w-full">
-    
+
 
       <WorldMap
         dots={[

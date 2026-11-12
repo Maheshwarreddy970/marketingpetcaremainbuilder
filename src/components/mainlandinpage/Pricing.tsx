@@ -24,7 +24,7 @@ export default function Pricing() {
       {/* Pricing Card */}
       <div className="mt-8 md:mt-16  mx-auto">
         <div className="relative overflow-hidden rounded-[35px] border border-[#E6E6E6] bg-white">
-       
+
 
           <div className="relative grid items-center gap-12 divide-y p-8 md:p-14 md:grid-cols-2 md:divide-x md:divide-y-0 divide-[#E6E6E6]">
             {/* Left: price + CTA */}
@@ -50,10 +50,10 @@ export default function Pricing() {
               <ul role="list" className="space-y-4">
                 {pricingContent.features.map((item) => (
                   <li key={item} className="flex items-center gap-3">
-                    <span className="flex items-center justify-center size-5 rounded-full bg-[#2462EA]/10 shrink-0">
+                    <span className="flex items-center justify-center size-5 rounded-full bg-[#091d42]/10 shrink-0">
                       <Check
                         strokeWidth={3}
-                        className="text-[#2462EA] size-3"
+                        className="text-[#091d42] size-3"
                       />
                     </span>
                     <span className="text-black">{item}</span>

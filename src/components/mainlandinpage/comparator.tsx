@@ -22,14 +22,14 @@ export function UsVsThemComparison() {
 
 
                 {/* Rotated icon chip (Hidden on very small screens to save space) */}
-                <div className="absolute -right-6 -top-6 -z-10 hidden rotate-[14deg] sm:block">
+                <div className="absolute -right-6 -top-6 -z-10 hidden  sm:block">
                     <div
                         style={{
                             background: "linear-gradient(147.09deg, #fbfbfb 9.63%, #e8e8e8 91.74%)",
                         }}
                         className="flex size-16 items-center justify-center rounded-2xl border border-[#f3f3f3] shadow-[0px_5px_11px_0px_rgba(0,0,0,0.1),0px_20px_20px_0px_rgba(0,0,0,0.09),0px_44px_27px_0px_rgba(0,0,0,0.05)] lg:size-20"
                     >
-                        <ShieldCheck className="size-8 text-[#2462EA] lg:size-10" />
+                        <ShieldCheck className="size-8 text-[#091d42] lg:size-10" />
                     </div>
                 </div>
 
@@ -39,7 +39,7 @@ export function UsVsThemComparison() {
 
                         {/* Elevated highlight lane behind the "us" column */}
                         <div
-                            className="pointer-events-none absolute bottom-0 top-0 rounded-2xl bg-[#2462EA] shadow-lg md:rounded-3xl"
+                            className="pointer-events-none absolute bottom-0 top-0 rounded-2xl bg-[#091d42] shadow-lg md:rounded-3xl"
                             style={{
                                 left: "25%",
                                 width: "25%",

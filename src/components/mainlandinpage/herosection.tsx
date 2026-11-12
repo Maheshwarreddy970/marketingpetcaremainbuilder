@@ -1,113 +1,81 @@
-import React from 'react'
 import AntiMetalButton from './mainbutton'
-import { GlobeCheck } from 'lucide-react'
 import { HERO_CONTENT } from './data'
 
-
+/*
+  Font link (add once in index.html or your root layout):
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&display=swap" rel="stylesheet" />
+*/
+const FONT = "'Bricolage Grotesque', ui-sans-serif, system-ui, sans-serif"
 
 export default function Herosection() {
+  const { comparison } = HERO_CONTENT
+
   return (
-    <div className="md:h-[912px] h-[710px] p-4 relative rounded-[35px] border border-[#E6E6E6] mt-5 overflow-hidden">
-     
+    <section
+      style={{ fontFamily: FONT }}
+      className="mt-5 rounded-[35px] border border-[#DCE3EA] bg-white px-6 py-16 text-[#0B2545] md:px-16 md:py-24"
+    >
+      <div className="mx-auto grid max-w-6xl items-end gap-14 lg:grid-cols-[1.2fr_1fr] lg:gap-16">
+        <div>
+          <h1 className="text-[2.75rem] font-bold leading-[1.02] tracking-[-0.035em] md:text-7xl">
+            {HERO_CONTENT.heading.map((line) => (
+              <span key={line} className="block">
+                {line}
+              </span>
+            ))}
+          </h1>
 
-      {/* Globe Icon */}
-      <div className="absolute -z-10 md:top-24 md:left-36 top-4 left-4 rotate-[-15.11deg]">
-        <div
-          style={{
-            background: "linear-gradient(147.09deg, #fbfbfb 9.63%, #e8e8e8 91.74%)",
-          }}
-          className="size-12 md:size-16 lg:size-24 flex items-center justify-center rounded-xl lg:rounded-3xl border border-[#f3f3f3] shadow-[0px_5px_11px_0px_rgba(0,0,0,0.1),0px_20px_20px_0px_rgba(0,0,0,0.09),0px_44px_27px_0px_rgba(0,0,0,0.05),0px_79px_32px_0px_rgba(0,0,0,0.01),0px_123px_35px_0px_rgba(0,0,0,0)]"
-        >
-          <GlobeCheck className="text-[#2462EA] md:size-12 size-7" />
-        </div>
-      </div>
+          <p className="mt-8 max-w-[36ch] text-lg leading-relaxed text-[#5C6B7A] md:text-xl">
+            {HERO_CONTENT.description}
+          </p>
 
-      {/* Logo Image */}
-      <div className="absolute -z-10 md:bottom-80 md:right-96 bottom-64 right-11 rotate-[14deg]">
-        <div
-          style={{
-            background: "linear-gradient(147.09deg, #fbfbfb 9.63%, #e8e8e8 91.74%)",
-          }}
-          className="size-16 lg:size-24 flex items-center justify-center rounded-xl lg:rounded-3xl border border-[#f3f3f3] shadow-[0px_5px_11px_0px_rgba(0,0,0,0.1),0px_20px_20px_0px_rgba(0,0,0,0.09),0px_44px_27px_0px_rgba(0,0,0,0.05),0px_79px_32px_0px_rgba(0,0,0,0.01),0px_123px_35px_0px_rgba(0,0,0,0)]"
-        >
-          <img
-            src={HERO_CONTENT.images.logo.src}
-            alt={HERO_CONTENT.images.logo.alt}
-            width={100}
-            height={100}
-            className=" size-11 md:size-16"
-          />
-        </div>
-      </div>
-
-      {/* Daycare SVG */}
-      <div className="absolute -z-10 md:bottom-72 bottom-56 md:-left-5 -left-14 rotate-[10deg] hidden md:block">
-        <div className="rotate-[5deg] scale-[0.9]">
-          <img
-            src={HERO_CONTENT.images.daycare.src}
-            alt={HERO_CONTENT.images.daycare.alt}
-            width={100}
-            height={100}
-            className="size-60"
-          />
-        </div>
-      </div>
-
-      {/* Pet Groomer SVG */}
-      <div className="absolute -z-10 md:-bottom-30 -bottom-26 md:-left-10 -left-24">
-        <div className="scale-[0.9]">
-          <img
-            src={HERO_CONTENT.images.petgroomer.src}
-            alt={HERO_CONTENT.images.petgroomer.alt}
-            width={100}
-            height={100}
-            className="size-96"
-          />
-        </div>
-      </div>
-
-      {/* Mobile Grooming SVG */}
-      <div className="absolute -z-10 md:-bottom-24 md:-right-10 -bottom-24 -right-48">
-        <div className="md:[&>*]:scale-100 [&>*]:scale-75">
-          <div className="relative w-[400px] h-[439px]">
-            <img
-              src={HERO_CONTENT.images.mobileGrooming.src}
-              alt={HERO_CONTENT.images.mobileGrooming.alt}
-              width={100}
-              height={100}
-              className="size-96"
-            />
+          <div className="mt-10 flex flex-wrap items-center gap-x-6 gap-y-4">
+            <AntiMetalButton />
+            <a
+              href={HERO_CONTENT.secondaryCta.href}
+              className="text-base font-semibold underline decoration-[#0B2545]/25 underline-offset-4 transition-colors hover:decoration-[#0B2545] focus-visible:rounded-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#0B2545]"
+            >
+              {HERO_CONTENT.secondaryCta.label}
+            </a>
           </div>
         </div>
+
+        <figure
+          aria-label={comparison.ariaLabel}
+          className="rounded-2xl border border-[#DCE3EA] bg-[#F4F6F8] p-6 md:p-8"
+        >
+          <dl>
+            {comparison.rows.map((row) => (
+              <div
+                key={row.label}
+                className="flex items-center justify-between gap-6 border-b border-[#DCE3EA] py-5 first:pt-0 last:border-b-0 last:pb-0"
+              >
+                <dt
+                  className={`flex items-center gap-3 text-sm md:text-base ${
+                    row.highlight ? 'font-semibold text-[#0B2545]' : 'text-[#5C6B7A]'
+                  }`}
+                >
+                  {row.highlight && (
+                    <span aria-hidden="true" className="size-2 shrink-0 rounded-full bg-[#D8EA3F]" />
+                  )}
+                  {row.label}
+                </dt>
+                <dd
+                  className={`font-bold tabular-nums tracking-tight ${
+                    row.highlight ? 'text-4xl text-[#0B2545]' : 'text-3xl text-[#5C6B7A]'
+                  }`}
+                >
+                  {row.amount}
+                </dd>
+              </div>
+            ))}
+          </dl>
+
+          <figcaption className="mt-6 text-xs leading-relaxed text-[#5C6B7A]">
+            {comparison.note}
+          </figcaption>
+        </figure>
       </div>
-
-      {/* Hero Content Center */}
-      <div className="w-full h-5/6 flex flex-col items-center justify-center">
-        <a href={HERO_CONTENT.badgeLink}>
-          <div className="md:w-[459px] w-72 md:h-10 h-9 rounded-xl bg-[#2462EA]/50 flex items-center justify-center md:gap-3 gap-1">
-            <p className="md:text-base text-[10px] font-semibold">
-              {HERO_CONTENT.badgeText}
-            </p>
-          </div>
-        </a>
-
-        <h1 className="md:text-6xl text-2xl font-bold text-center md:w-4/6 w-full mt-8">
-          {HERO_CONTENT.heading.map((word, index) => (
-            <React.Fragment key={index}>
-              <span className="inline-block">{word}</span>
-              {index < HERO_CONTENT.heading.length - 1 && " "}
-            </React.Fragment>
-          ))}
-        </h1>
-
-        <p className="md:text-lg text-sm font-medium leading-[23px] text-center tracking-tight max-w-2xl mx-auto w-[95%] mt-9 text-neutral-600">
-          {HERO_CONTENT.description}
-        </p>
-
-        <div className="flex gap-4 mt-8">
-          <AntiMetalButton />
-        </div>
-      </div>
-    </div>
+    </section>
   )
 }

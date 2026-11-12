@@ -4,20 +4,9 @@ import { FOOTER_CONTENT } from './data'
 export default function Footer() {
   return (
     <footer className="relative mb-11 flex min-h-[500px] w-full flex-col justify-between overflow-hidden rounded-[28px] border border-[#E6E6E6] p-4 pb-0 sm:rounded-[35px] md:p-8 md:pb-0 lg:p-12 lg:pb-0">
-      
 
-      {/* Decorative Left Graphic */}
-      <div className="pointer-events-none absolute -bottom-36 -left-32 -z-10 rotate-[20deg] scale-50 opacity-60 sm:scale-75 md:-bottom-40 md:-left-20 md:z-0 md:opacity-100 [&>*]:scale-100">
-        <div className="relative h-[439px] w-[405px]">
-          <img
-            src={FOOTER_CONTENT.graphics.left.src}
-            alt={FOOTER_CONTENT.graphics.left.alt}
-            width={100}
-            height={100}
-            className="size-96"
-          />
-        </div>
-      </div>
+
+   
 
       {/* Decorative Right Graphic */}
       <div className="pointer-events-none absolute -bottom-40 -right-32 -z-10 rotate-[-10deg] scale-50 opacity-60 sm:scale-75 md:-bottom-36 md:-right-10 md:z-0 md:opacity-100 [&>*]:scale-100">
@@ -41,12 +30,10 @@ export default function Footer() {
               src={FOOTER_CONTENT.brand.logo.src}
               alt={FOOTER_CONTENT.brand.logo.alt}
               width={100}
-              height={100}
-              className="size-8"
+              height={200}
+              className="h-16 w-32 object-contain"
             />
-            <span className="text-2xl font-semibold sm:text-3xl">
-              {FOOTER_CONTENT.brand.name}
-            </span>
+
           </div>
           <p className="mt-4 text-2xl font-bold tracking-tight text-black sm:text-3xl md:mt-8 md:text-4xl lg:text-5xl xl:leading-[54px]">
             {FOOTER_CONTENT.brand.tagline}
@@ -62,7 +49,7 @@ export default function Footer() {
                 {section.links.map((link) => (
                   <a
                     key={link.label}
-                    className="text-sm font-normal text-[#535353] transition-colors hover:text-[#2462EA] sm:text-base"
+                    className="text-sm font-normal text-[#535353] transition-colors hover:text-[#091d42] sm:text-base"
                     href={link.href}
                   >
                     {link.label}

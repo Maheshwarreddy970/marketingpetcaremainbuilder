@@ -18,13 +18,9 @@ export default function Navbar() {
           src={NAVBAR_CONTENT.logo.src}
           alt={NAVBAR_CONTENT.logo.alt}
           width={100}
-          height={100}
-          className="size-10"
+          height={200}
+          className="h-16 w-32 object-contain"
         />
-        <span className="font-mono text-xl font-semibold tracking-tight text-[#2462EA]">
-          {NAVBAR_CONTENT.brand.prefix}
-          <span className="text-[#76a2ff]">{NAVBAR_CONTENT.brand.suffix}</span>
-        </span>
       </a>
 
       {/* Desktop Navigation */}
@@ -33,8 +29,8 @@ export default function Navbar() {
           {NAVBAR_CONTENT.navLinks.map((link, index) => (
             <a
               key={index}
-              className={`text-base font-medium transition-colors hover:text-[#2462EA] ${
-                link.active ? "text-[#2462EA]" : "text-gray-700"
+              className={`text-base font-medium transition-colors hover:text-[#091d42] ${
+                link.active ? "text-[#091d42]" : "text-gray-700"
               }`}
               href={link.href}
             >

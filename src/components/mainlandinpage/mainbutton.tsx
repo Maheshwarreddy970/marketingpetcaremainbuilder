@@ -15,19 +15,19 @@ interface DoubleChevronProps {
 // Keep button/anchor props separate so the event handler types don't conflict.
 export type AntiMetalButtonProps =
   | ({
-      label?: string;
-      accentFrom?: string;
-      accentTo?: string;
-      dotColor?: string;
-      href?: undefined;
-    } & React.ButtonHTMLAttributes<HTMLButtonElement>)
+    label?: string;
+    accentFrom?: string;
+    accentTo?: string;
+    dotColor?: string;
+    href?: undefined;
+  } & React.ButtonHTMLAttributes<HTMLButtonElement>)
   | ({
-      label?: string;
-      accentFrom?: string;
-      accentTo?: string;
-      dotColor?: string;
-      href: string;
-    } & React.AnchorHTMLAttributes<HTMLAnchorElement>);
+    label?: string;
+    accentFrom?: string;
+    accentTo?: string;
+    dotColor?: string;
+    href: string;
+  } & React.AnchorHTMLAttributes<HTMLAnchorElement>);
 
 // ============================================================================
 // Sub-components
@@ -88,14 +88,14 @@ export const AntiMetalButton = React.forwardRef<
       label,
       accentFrom = "#ffffff",
       accentTo = "#ffffff",
-      dotColor = "#0553fc",
+      dotColor = "#091d42",
       href,
       ...props
     },
     ref
   ) => {
     const content = label ?? children ?? "Book a demo";
-    
+
     // Conditionally render an <a> or <button> based on whether an href is provided
     // The props union contains mutually exclusive event-handler types. Cast at
     // this polymorphic render boundary so TypeScript does not merge anchor and
@@ -110,7 +110,7 @@ export const AntiMetalButton = React.forwardRef<
           // Changed to `w-fit`, added `items-center` for vertical alignment, 
           // and used padding (`pl-12 pr-4`) to space the text out dynamically.
           "group/btn relative inline-flex h-11 w-fit items-center overflow-hidden rounded-xl pl-12 pr-4 transition-transform active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background",
-          "bg-[#2462EA]",
+          "bg-[#091d42]",
           className
         )}
         {...(props as React.HTMLAttributes<HTMLElement>)}

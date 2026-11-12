@@ -6,7 +6,7 @@ export const NAVBAR_CONTENT = {
     href: "/",
   },
   logo: {
-    src: "/logosvg.svg",
+    src: "/mainlogo.png",
     alt: "NexPet Care Logo",
   },
   navLinks: [
@@ -19,15 +19,17 @@ export const NAVBAR_CONTENT = {
 
 // --- 2. HERO CONTENT ---
 export const HERO_CONTENT = {
-  badgeLink: "/pricing",
-  badgeText: "Stop renting your website. Own it forever →",
-  heading: ["Premium,", "Done-For-You", "Websites for", "Pet", "Professionals."],
-  description: "We build, design, and launch stunning custom websites for groomers, daycares, and clinics. Zero monthly hosting fees. Fully integrated with your booking software to fill your calendar on autopilot.",
-  images: {
-    logo: { src: "/logosvg.svg", alt: "NexPet Care logo" },
-    daycare: { src: "/daycare.svg", alt: "Dog daycare icon" },
-    petgroomer: { src: "/petgroomer.svg", alt: "Pet groomer icon" },
-    mobileGrooming: { src: "/mobile-grooming.svg", alt: "Mobile grooming icon" },
+  heading: ["Pay once.", "Own your website."],
+  description:
+    "We design and launch a custom site for groomers, daycares, and clinics, then connect it to the booking software you already use. No monthly hosting bill.",
+  secondaryCta: { label: "See pricing", href: "/pricing" },
+  comparison: {
+    ariaLabel: "Three-year cost comparison",
+    rows: [
+      { label: "Wix Core with online booking, 3 years", amount: "$1,044", highlight: false },
+      { label: "NexPet build, paid once", amount: "$799", highlight: true },
+    ],
+    note: "Wix at $29 a month, billed yearly, over 36 months. By month 28 the Wix plan has cost more than $799. Domain renewals are not included on either side.",
   },
 };
 
@@ -189,7 +191,7 @@ export const pricingContent = {
 export const FAQ_CONTENT = {
   heading: 'Frequently Asked Questions',
   logoAlt: 'NexPet Care',
-  logoSrc: '/logosvg.svg',
+  logoSrc: '/sqrlogo.png',
   expandIcon: '+',
   items: [
     {
@@ -269,15 +271,15 @@ export const FOOTER_CONTENT = {
     name: 'NexPet Care',
     tagline: 'Premium, Done-For-You Websites for Pet Professionals. Stop renting, start owning.',
     logo: {
-      src: '/logosvg.svg',
+      src: '/mainlogo.png',
       alt: 'NexPet Care logo',
     },
   },
   graphics: {
-    left: {
-      src: '/petgroomer.svg',
-      alt: 'pet groomer graphic',
-    },
+    // left: {
+    //   src: '/petgroomer.svg',
+    //   alt: 'pet groomer graphic',
+    // },
     right: {
       src: '/daycare.svg',
       alt: 'daycare graphic',
