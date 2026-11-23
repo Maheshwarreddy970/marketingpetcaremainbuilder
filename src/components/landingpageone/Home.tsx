@@ -182,7 +182,7 @@ export default function HeroSection({ data }: { data: any }) {
 
                         {data.ctaSecondary && (
                             <a
-                                href={data.ctaSecondary?.href || "#contact"}
+                                href={data.ctaSecondary?.href || "/contact"}
                                 className={cn(
                                     "group relative text-sm rounded-full py-3.5 px-8 flex items-center justify-center gap-[10px] w-full sm:w-fit overflow-hidden border-2",
                                     "transition-all duration-300 hover:bg-black/5 shadow-none",

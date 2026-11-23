@@ -2,7 +2,7 @@
 
 import { doc, getDoc, updateDoc } from "firebase/firestore";
 import { db } from "@/lib/firebase";
-import { revalidateTag, revalidatePath } from "next/cache";
+import { revalidateTag, revalidatePath, updateTag } from "next/cache";
 
 export async function connectCustomDomainAction(slug: string, customDomain: string) {
   try {
@@ -190,32 +190,35 @@ export async function saveWebsiteContentAction(slug: string, websiteOneData: any
 
 export async function publishWebsiteUpdatesAction(slug: string) {
   try {
-    // 1. Fetch the document to check for a custom domain
+    // 1. Fetch the tenant document to check for an attached custom domain
     const websiteRef = doc(db, "websites", slug);
     const websiteSnap = await getDoc(websiteRef);
-    const websiteData = websiteSnap.data();
+    const websiteData = websiteSnap.exists() ? websiteSnap.data() : null;
 
-    // 2. Clear the standard slug tags
-    // @ts-ignore
-    revalidateTag(`website-${slug}`);
-    // @ts-ignore
-    revalidateTag("website");
+    // 2. Immediately expire ONLY this tenant's database cache (no global "website" tag)
+    updateTag(`website-${slug}`);
 
-    // 🔥 3. Explicitly clear the custom domain cache if it exists
+    // 3. Purge the homepage AND every nested subpage (/about, /services/*, /reviews, /faq, /contact, legal)
+    revalidatePath(`/${slug}`, "layout");
+    revalidatePath(`/${slug}/sitemap_api`);
+    revalidatePath(`/${slug}/llms.txt`);
+
+    // 4. Do the exact same for the custom domain if one is connected
     if (websiteData?.customDomain) {
-      // @ts-ignore
-      revalidateTag(`website-${websiteData.customDomain}`);
-      revalidatePath(`/${websiteData.customDomain}`, 'page');
+      const cleanDomain = websiteData.customDomain
+        .replace(/^https?:\/\//, "")
+        .replace(/^www\./, "")
+        .replace(/\/$/, "")
+        .trim();
+
+      updateTag(`website-${cleanDomain}`);
+      revalidatePath(`/${cleanDomain}`, "layout");
+      revalidatePath(`/${cleanDomain}/sitemap_api`);
+      revalidatePath(`/${cleanDomain}/llms.txt`);
     }
 
-    // 4. Force clear the Next.js static HTML for the normal routes
-    revalidatePath(`/${slug}`, 'page');
-    revalidatePath(`/${slug}`, 'layout');
-
-    // 5. Force clear the Dashboard/Editor
-    revalidatePath(`/dashboard/${slug}`);
-    revalidatePath(`/dashboard/${slug}/edit`);
-    revalidatePath(`/dashboard/${slug}/settings`);
+    // 5. Purge the tenant's Dashboard, Settings, and Editor routes in one call
+    revalidatePath(`/dashboard/${slug}`, "layout");
 
     return { success: true };
   } catch (error: any) {

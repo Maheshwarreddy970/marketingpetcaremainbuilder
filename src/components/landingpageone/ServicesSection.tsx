@@ -2,37 +2,9 @@ import React from 'react';
 import { cn } from '@/lib/utils';
 import SmartHeading from '../ui/SmartHeading';
 import { ArrowRight } from 'lucide-react';
+import { getServiceIcon } from '@/icons/getServiceIco';
 
-// 🔥 Outline Icons from react-icons
-import { IoCutOutline } from "react-icons/io5";
-import { PiToothLight, PiShowerLight, PiCatLight, PiPawPrintLight, PiDropLight } from "react-icons/pi";
-import { LuWind, LuBrush } from "react-icons/lu";
-import { FaRegFaceGrinStars } from "react-icons/fa6";
-import { FiHeart, FiScissors } from "react-icons/fi";
-import { TbDental } from "react-icons/tb";
-
-const iconMappings = [
-    { keywords: ['haircut', 'cut', 'scissor', 'trim', 'styling', 'shave'], component: IoCutOutline },
-    { keywords: ['bath', 'tub', 'wash', 'cleansing', 'shampoo'], component: PiShowerLight },
-    { keywords: ['dry', 'blow dry', 'wind', 'blow'], component: LuWind },
-    { keywords: ['nail', 'clipping', 'claw', 'paw'], component: PiPawPrintLight },
-    { keywords: ['brushing', 'brush', 'coat', 'comb', 'deshedding'], component: LuBrush },
-    { keywords: ['rinse', 'breath', 'spray', 'perfume'], component: FaRegFaceGrinStars },
-    { keywords: ['skin', 'treatment', 'nourishing', 'conditioner'], component: PiDropLight },
-    { keywords: ['teeth', 'dental', 'plaque', 'tartar', 'mouth', 'scaling', 'smile', 'clean'], component: TbDental },
-    { keywords: ['cat', 'feline', 'kitten'], component: PiCatLight },
-    { keywords: ['health', 'care', 'protect', 'safe'], component: FiHeart },
-];
-
-const fallbackIcons = [TbDental, FiHeart, LuBrush, PiShowerLight];
-
-const getIconForService = (service: any) => {
-    const searchString = `${service.title || ''} ${service.description || ''} ${service.iconKey || ''}`.toLowerCase();
-    for (const mapping of iconMappings) {
-        if (mapping.keywords.some(keyword => searchString.includes(keyword))) return mapping.component;
-    }
-    return fallbackIcons[(service.title?.length || 0) % fallbackIcons.length];
-};
+// 🐾 Custom pet line icons (one file per icon, chosen by service heading)
 
 export default function ServicesSection({ data }: { data: any }) {
     if (!data) return null;
@@ -75,7 +47,8 @@ export default function ServicesSection({ data }: { data: any }) {
 
                 <div className={cn("grid gap-6 w-full mb-12", getGridClasses(services.length))}>
                     {services.map((service: any, index: number) => {
-                        const Icon = getIconForService(service);
+                        // Picks the icon from the service title (or service.iconKey if you set one)
+                        const Icon = getServiceIcon(service);
                         const hasValidLink = service.href && service.href.trim() !== "" && service.href.trim() !== "#";
 
                         return (
@@ -88,7 +61,11 @@ export default function ServicesSection({ data }: { data: any }) {
                                     }}
                                 >
                                     <div className="mb-6">
-                                        <Icon className="w-11 h-11 transition-transform group-hover:scale-110 duration-300" style={{ color: data.styling?.iconColor || data.iconColor }} strokeWidth={1.5} />
+                                        {/* No strokeWidth prop here: the icons ship with a fine 0.9 line by default */}
+                                        <Icon
+                                            className="w-14 h-14 transition-transform group-hover:scale-105 duration-300"
+                                            style={{ color: data.styling?.iconColor || data.iconColor }}
+                                        />
                                     </div>
 
                                     <div className="flex flex-col flex-grow">
@@ -133,5 +110,3 @@ export default function ServicesSection({ data }: { data: any }) {
         </section>
     );
 }
-
-
