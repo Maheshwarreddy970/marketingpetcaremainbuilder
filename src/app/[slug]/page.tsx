@@ -117,7 +117,7 @@ export default async function LiveWebsitePage({ params }: { params: Promise<{ sl
         >
           <div className="w-10 h-10 bg-[#2462EA]/10 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
             <img
-              src="/logosvg.svg"
+              src="/sqrlogo.png"
               alt="NexPet Care"
               width={20}
               height={20}
