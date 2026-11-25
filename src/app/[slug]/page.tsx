@@ -3,6 +3,8 @@ import Script from "next/script";
 import { getWebsiteData } from "@/lib/get-website";
 import WebsiteOne from "@/components/templates/WebsiteOne";
 import TrackClientView from "@/components/TrackClientView";
+import PreviewBanner from "@/components/PreviewBanner";
+import PreviewDashboardBadge from "@/components/PreviewDashboardBadge";
 
 export const revalidate = false; // Cached until revalidatePath is called on save
 export const dynamicParams = true;
@@ -14,6 +16,11 @@ export async function generateStaticParams() {
 const TEMPLATES: Record<string, React.FC<any>> = {
   websiteOne: WebsiteOne,
 };
+
+// A site is treated as a private preview unless it is explicitly marked live.
+// Set `isPreview: false` on the website data when a client goes live and both
+// the banner and the dashboard panel disappear.
+const isPreviewSite = (data: any) => data?.isPreview !== false;
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
@@ -38,7 +45,10 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     icons: icon
       ? { icon, shortcut: icon, apple: settings.appleTouchIcon || icon }
       : undefined,
-    robots: { index: true, follow: true },
+    // Private previews should never show up in Google
+    robots: isPreviewSite(data)
+      ? { index: false, follow: false }
+      : { index: true, follow: true },
     openGraph: {
       title: siteTitle,
       description: siteDescription,
@@ -69,6 +79,7 @@ export default async function LiveWebsitePage({ params }: { params: Promise<{ sl
   const templateData = templateId === "websiteOne" ? data.websiteOneData : data.websiteTwoData;
   const settings = data.settings || {};
   const businessName = settings.businessName || data.clientName || slug;
+  const isPreview = isPreviewSite(data);
 
   const socials = templateData?.footer?.socials || {};
   const sameAs = Object.values(socials).filter((url: any) => url && url !== "/" && url !== "#");
@@ -99,6 +110,9 @@ export default async function LiveWebsitePage({ params }: { params: Promise<{ sl
       dir={settings.rtlLayout ? "rtl" : "ltr"}
       className={htmlClasses.join(" ")}
     >
+      {/* Trust banner: first thing a business owner sees */}
+      {isPreview && <PreviewBanner />}
+
       <main className="w-full min-h-screen relative">
         <script
           type="application/ld+json"
@@ -110,29 +124,8 @@ export default async function LiveWebsitePage({ params }: { params: Promise<{ sl
 
         <TemplateComponent data={templateData} slug={slug} />
 
-        {/* Always-Visible Dashboard Badge */}
-        <a
-          href={`https://nexpetcare.com/dashboard/${slug}`}
-          className="fixed bottom-20 right-4 md:bottom-6 md:right-6 z-[9999] bg-white border border-gray-200 px-2 py-2 pr-5 rounded-full shadow-2xl flex items-center gap-3 hover:bg-gray-50 hover:border-[#2462EA]/40 transition-colors group"
-        >
-          <div className="w-10 h-10 bg-[#2462EA]/10 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-            <img
-              src="/sqrlogo.png"
-              alt="NexPet Care"
-              width={20}
-              height={20}
-              className="w-5 h-5 object-contain"
-            />
-          </div>
-          <div className="flex flex-col">
-            <span className="text-[10px] text-[#2462EA] uppercase tracking-wider font-extrabold leading-tight">
-              Site Admin
-            </span>
-            <span className="text-sm font-bold text-gray-900 leading-tight">
-              Open Dashboard &rarr;
-            </span>
-          </div>
-        </a>
+        {/* Preview-only dashboard panel (replaces the old round "Site Admin" badge) */}
+        {isPreview && <PreviewDashboardBadge slug={slug} />}
 
         {settings.googleAnalyticsId && (
           <Script
