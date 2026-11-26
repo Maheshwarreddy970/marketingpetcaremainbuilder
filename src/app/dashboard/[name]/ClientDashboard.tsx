@@ -9,6 +9,7 @@ import {
 import merge from "lodash/merge";
 import WebsiteOne from "@/components/templates/WebsiteOne";
 import { deployWebsiteAction, publishWebsiteUpdatesAction } from "@/actions/tenant";
+import HostingCatch from "@/components/mainlandinpage/HostingCatch";
 
 interface DashboardProps {
   name: string;
@@ -327,7 +328,7 @@ export default function ClientDashboard({ name, dbData }: DashboardProps) {
           </div>
         </figure>
       </div>
-
+<HostingCatch></HostingCatch>
       {/* Auto-scrolling Template Preview - ALWAYS VISIBLE */}
       <div className="w-full max-w-7xl mx-auto mt-8 flex flex-col bg-white rounded-2xl border border-gray-300 overflow-hidden ring-1 ring-black/5">
         <div className="h-14 bg-gray-100/80 border-b border-gray-200 flex items-center px-4 justify-between select-none shrink-0 z-10 relative">

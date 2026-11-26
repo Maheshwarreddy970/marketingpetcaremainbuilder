@@ -17,12 +17,42 @@ export const NAVBAR_CONTENT = {
   ],
 };
 
-// --- 2. HERO CONTENT ---
+
+export const CATCH_CONTENT = {
+  id: "the-catch",
+  title: "Why is hosting $0/month?",
+  intro:
+    "Wix and Squarespace charge $30–$50 a month because you're renting heavy drag-and-drop builder software. We build it differently.",
+  points: [
+    {
+      title: "Fully custom before launch",
+      body: "We build all 4 pages around your business: your photos, services, branding, and the booking system you already use.",
+    },
+    {
+      title: "Simple, safe edits after launch",
+      body: "Use your private dashboard to change prices, hours, text, and photos in seconds, without ever breaking your mobile layout.",
+    },
+  ],
+  catchPoint: {
+    title: "The one catch",
+    body: "It's not a drag-and-drop builder, so you can't add new layout blocks or extra pages yourself. That keeps the code light, which is why hosting costs us almost nothing and we include it at $0/month. You can export your full site files anytime.",
+  },
+  footer:
+    "Need a 5th page or a major redesign later? You pay a small one-time fee only if you ask for it. Never a forced monthly bill.",
+};
+
 export const HERO_CONTENT = {
   heading: ["Pay once.", "Own your website."],
   description:
     "We design and launch a custom site for groomers, daycares, and clinics, then connect it to the booking software you already use. No monthly hosting bill.",
   secondaryCta: { label: "See pricing", href: "/pricing" },
+
+  // One short trust line under the main CTA. The button scrolls to CATCH_CONTENT.
+  trustStrip: {
+    items: ["$799 one-time", "$0/mo hosting", "You own the code"],
+    catchLabel: "What's the catch?",
+  },
+
   comparison: {
     ariaLabel: "Three-year cost comparison",
     rows: [

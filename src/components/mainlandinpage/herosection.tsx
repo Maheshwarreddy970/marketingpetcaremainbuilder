@@ -1,5 +1,8 @@
+'use client'
+
+import type { MouseEvent } from 'react'
 import AntiMetalButton from './mainbutton'
-import { HERO_CONTENT } from './data'
+import { HERO_CONTENT, CATCH_CONTENT } from './data'
 
 /*
   Font link (add once in index.html or your root layout):
@@ -7,8 +10,24 @@ import { HERO_CONTENT } from './data'
 */
 const FONT = "'Bricolage Grotesque', ui-sans-serif, system-ui, sans-serif"
 
+const focusRing =
+  'focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#0B2545]'
+
 export default function Herosection() {
-  const { comparison } = HERO_CONTENT
+  const { comparison, trustStrip } = HERO_CONTENT
+  const catchHref = `#${CATCH_CONTENT.id}`
+
+  // Smooth-scroll to the explainer below. Without JS, the plain #anchor still works.
+  const goToCatch = (e: MouseEvent<HTMLAnchorElement>) => {
+    const target = document.getElementById(CATCH_CONTENT.id)
+    if (!target) return
+    e.preventDefault()
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    target.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'start' })
+    // Move keyboard / screen-reader focus to the new section's heading.
+    target.querySelector<HTMLElement>('[tabindex="-1"]')?.focus({ preventScroll: true })
+    history.replaceState(null, '', catchHref)
+  }
 
   return (
     <section
@@ -33,9 +52,40 @@ export default function Herosection() {
             <AntiMetalButton />
             <a
               href={HERO_CONTENT.secondaryCta.href}
-              className="text-base font-semibold underline decoration-[#0B2545]/25 underline-offset-4 transition-colors hover:decoration-[#0B2545] focus-visible:rounded-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#0B2545]"
+              className={`text-base font-semibold underline decoration-[#0B2545]/25 underline-offset-4 transition-colors hover:decoration-[#0B2545] focus-visible:rounded-sm ${focusRing}`}
             >
               {HERO_CONTENT.secondaryCta.label}
+            </a>
+          </div>
+
+          {/* Trust strip + link to the explainer below */}
+          <div className="mt-7 flex flex-col gap-4 sm:flex-row sm:flex-wrap sm:items-center sm:gap-x-6">
+            <ul className="flex flex-wrap gap-x-5 gap-y-2 text-sm font-semibold md:text-base">
+              {trustStrip.items.map((item) => (
+                <li key={item} className="flex items-center gap-2">
+                  <span
+                    aria-hidden="true"
+                    className="size-2 shrink-0 rounded-full bg-[#D8EA3F] ring-1 ring-[#0B2545]/15"
+                  />
+                  {item}
+                </li>
+              ))}
+            </ul>
+
+            <a
+              href={catchHref}
+              onClick={goToCatch}
+              className={`inline-flex w-fit items-center gap-2 rounded-full border border-[#0B2545]/25 py-1.5 pl-4 pr-1.5 text-sm font-semibold transition-colors hover:border-[#0B2545] hover:bg-[#F4F6F8] ${focusRing}`}
+            >
+              {trustStrip.catchLabel}
+              <span
+                aria-hidden="true"
+                className="flex size-6 items-center justify-center rounded-full bg-[#0B2545] text-white"
+              >
+                <svg viewBox="0 0 24 24" className="size-3.5" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M6 9.5l6 6 6-6" />
+                </svg>
+              </span>
             </a>
           </div>
         </div>

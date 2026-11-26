@@ -5,6 +5,7 @@ import { CallToAction } from "@/components/mainlandinpage/Cta";
 import Faq from "@/components/mainlandinpage/Faq";
 import Footer from "@/components/mainlandinpage/Footer";
 import Herosection from "@/components/mainlandinpage/herosection";
+import HostingCatch from "@/components/mainlandinpage/HostingCatch";
 import HowItWorksDemo from "@/components/mainlandinpage/Howitworks";
 import Integrate from "@/components/mainlandinpage/Integration";
 import Navbar from "@/components/mainlandinpage/navbar";
@@ -16,6 +17,7 @@ export default function Home() {
       <div className="max-w-9xl mx-auto md:px-11 px-2 md:pt-6">
         <Navbar></Navbar>
         <Herosection></Herosection>
+        <HostingCatch></HostingCatch>
         <Integrate></Integrate>
         <UsVsThemComparison></UsVsThemComparison>
         <Availability></Availability>
