@@ -17,13 +17,15 @@ export default function PrivacyPage() {
                 <h1 className="mt-2 text-3xl font-bold tracking-tight sm:text-4xl">
                     Privacy Policy
                 </h1>
-                <p className="mt-4 text-base leading-relaxed text-neutral-600">
-                    NexPet Care (&ldquo;we,&rdquo; &ldquo;us,&rdquo; or &ldquo;our&rdquo;)
-                    respects your privacy. This policy explains what information we
-                    collect on{" "}
-                    <strong className="font-semibold text-neutral-900">nexpetcare.com</strong>{" "}
-                    and in our client editing dashboard, how we use it, and your choices.
-                </p>
+              <p className="mt-4 text-base leading-relaxed text-neutral-600">
+          NexPet Care (&ldquo;we,&rdquo; &ldquo;us,&rdquo; or &ldquo;our&rdquo;)
+          respects your privacy. This policy explains what information we
+          collect on{" "}
+          <strong className="font-semibold text-neutral-900">nexpetcare.com</strong>{" "}
+          and our client staging and editing dashboard platform{" "}
+          <strong className="font-semibold text-neutral-900">nexpetcare.online</strong>,{" "}
+          how we use it, and your choices.
+        </p>
 
                 <div className="mt-12 space-y-10 text-base leading-relaxed text-neutral-700">
                     <section>

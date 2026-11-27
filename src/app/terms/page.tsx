@@ -18,15 +18,17 @@ export default function TermsPage() {
                     Terms of Service
                 </h1>
                 <p className="mt-4 text-base leading-relaxed text-neutral-600">
-                    These Terms of Service govern your use of{" "}
-                    <strong className="font-semibold text-neutral-900">nexpetcare.com</strong>{" "}
-                    and any website design, development, hosting, or dashboard services
-                    provided by{" "}
-                    <strong className="font-semibold text-neutral-900">NexPet Care</strong>{" "}
-                    (&ldquo;we,&rdquo; &ldquo;us,&rdquo; or &ldquo;our&rdquo;). By
-                    commissioning a website build or using our services, you agree to
-                    these terms.
-                </p>
+          These Terms of Service govern your use of{" "}
+          <strong className="font-semibold text-neutral-900">nexpetcare.com</strong>,{" "}
+          our staging and client dashboard domain{" "}
+          <strong className="font-semibold text-neutral-900">nexpetcare.online</strong>,{" "}
+          and any website design, development, hosting, or dashboard services
+          provided by{" "}
+          <strong className="font-semibold text-neutral-900">NexPet Care</strong>{" "}
+          (&ldquo;we,&rdquo; &ldquo;us,&rdquo; or &ldquo;our&rdquo;). By
+          commissioning a website build or using our services, you agree to
+          these terms.
+        </p>
 
                 <div className="mt-12 space-y-10 text-base leading-relaxed text-neutral-700">
                     <section>
@@ -291,19 +293,26 @@ export default function TermsPage() {
                             accurate.
                         </p>
                     </section>
-
-                    <section>
-                        <h2 className="text-xl font-semibold text-neutral-900">
-                            9. Private Preview Mockups
-                        </h2>
-                        <p className="mt-3">
-                            Any complimentary preview mockup created prior to purchase is an
-                            unlisted, non-indexed demonstration draft with placeholder buttons
-                            and does not collect customer data. Preview mockups are deleted
-                            automatically if you choose not to proceed, or immediately upon
-                            request.
-                        </p>
-                    </section>
+<section>
+            <h2 className="text-xl font-semibold text-neutral-900">
+              9. Private Preview Mockups &amp; Staging Links
+            </h2>
+            <p className="mt-3">
+              Initial preview concepts are hosted on{" "}
+              <strong className="font-semibold text-neutral-900">nexpetcare.com</strong>,
+              and full multi-page staging builds and private client editing
+              dashboards run on our official platform domain{" "}
+              <strong className="font-semibold text-neutral-900">nexpetcare.online</strong>{" "}
+              (for example,{" "}
+              <code className="rounded bg-neutral-100 px-1.5 py-0.5 text-sm">
+                yourbusiness.nexpetcare.online
+              </code>
+              ). All preview mockups are unlisted, non-indexed drafts with
+              placeholder buttons that do not collect customer data, and are
+              deleted automatically if you choose not to proceed or immediately
+              upon request.
+            </p>
+          </section>
 
                     <section>
                         <h2 className="text-xl font-semibold text-neutral-900">

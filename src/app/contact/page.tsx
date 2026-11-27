@@ -65,7 +65,19 @@ export default function ContactPage() {
                                     </a>
                                 </div>
                             </div>
-
+<div className="border-t border-neutral-200 pt-4">
+                <p className="text-xs font-semibold uppercase tracking-wider text-neutral-500">
+                  Official Domains
+                </p>
+                <ul className="mt-1.5 space-y-1 text-sm text-neutral-700">
+                  <li>
+                    <strong className="font-medium text-neutral-900">nexpetcare.com</strong> — Main website &amp; initial previews
+                  </li>
+                  <li>
+                    <strong className="font-medium text-neutral-900">nexpetcare.online</strong> — Full staging previews &amp; client editing dashboards
+                  </li>
+                </ul>
+              </div>
                             <div className="flex items-start gap-3">
                                 <Clock className="mt-0.5 shrink-0 text-neutral-700" size={18} />
                                 <div>
