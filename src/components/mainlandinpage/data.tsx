@@ -22,7 +22,7 @@ export const CATCH_CONTENT = {
   id: "the-catch",
   title: "Why is hosting $0/month?",
   intro:
-    "Wix and Squarespace charge $30–$50 a month because you're renting heavy drag-and-drop builder software. We build it differently.",
+    "Wix and Squarespace charge $29–$50 a month because you're renting heavy drag-and-drop builder software. We build it differently.",
   points: [
     {
       title: "Fully custom before launch",
@@ -35,7 +35,7 @@ export const CATCH_CONTENT = {
   ],
   catchPoint: {
     title: "The one catch",
-    body: "It's not a drag-and-drop builder, so you can't add new layout blocks or extra pages yourself. That keeps the code light, which is why hosting costs us almost nothing and we include it at $0/month. You can export your full site files anytime.",
+    body: "It's not a drag-and-drop builder, so you can't add new layout blocks or extra pages yourself. That keeps your public site lightweight and cached, which is why hosting costs us pennies and we include it at $0/month. You can export your frontend site files anytime.",
   },
   footer:
     "Need a 5th page or a major redesign later? You pay a small one-time fee only if you ask for it. Never a forced monthly bill.",
@@ -63,20 +63,88 @@ export const HERO_CONTENT = {
   },
 };
 
-// --- 3. INTEGRATIONS CONTENT ---
-export const INTEGRATE_CONTENT = {
-  heading: "Seamlessly integrates with the booking tools you already use",
-  logos: [
-    { src: "/logos/logo-colored.567e1a83.png", alt: "Square" }, 
-    { src: "/logos/Yyeq5JBdPOlCbi3940tI1rJVUxg.avif", alt: "Vagaro" }, 
-    { src: "/logos/images (1).png", alt: "DaySmart" },
-    { src: "/logos/images (2).png", alt: "Gingr" }, 
-    { src: "/logos/images (3).png", alt: "MoeGo" }, 
-    { src: "/logos/images (4).png", alt: "Groomer.io" }, 
-    { src: "/logos/65f8c006bb3910ba9ca00e98_Teddy Logo Secondary (1)-p-1600.png", alt: "Teddy" },
-    { src: "/logos/banner_logo.png", alt: "Groo More" },
+
+// Replace the old TESTIMONIALS_CONTENT block in ./data with this one.
+
+export type Testimonial = {
+  business: string // used for the logo alt text and the React key
+  reviewer: string // bold line in the attribution plate
+  role: string // small line under the reviewer
+  logo: string
+  quote: string
+  liveSince: string
+  website: { label: string; href: string }
+  instagram: { label: string; href: string }
+  highlight?: { value: string; label: string }
+}
+
+export const TESTIMONIALS_CONTENT: {
+  id: string
+  title: string
+  intro: string
+  items: Testimonial[]
+} = {
+  id: "testimonials",
+  title: "Don’t take our word for it",
+  intro:
+    "Two pet businesses, two custom sites. Open their live websites and see the work for yourself.",
+  items: [
+    {
+      business: "Pet Town Grooming Inc",
+      reviewer: "Samuel Oluleye",
+      role: "Manager, Pet Town Grooming Inc",
+      logo: "/client2.webp",
+      liveSince: "Aug 2026",
+      quote:
+        "Maheshwar and his team at Nexpetcare were wonderful. Not only did they accommodate my requests and even went ahead to give me various demo websites, adjusting to our business needs and completely understanding us. One can tell they had our best interest in mind and it felt more personal than the standard ready to go websites platform. I highly recommend Nexpetcare 100%",
+      website: {
+        label: "pettowngrooming.com",
+        href: "https://pettowngrooming.com/",
+      },
+      instagram: {
+        label: "@pettowngroominginc",
+        href: "https://www.instagram.com/pettowngroominginc",
+      },
+    },
+    {
+      business: "The Dog & Cat Teeth Cleaning Boutique",
+      reviewer: "Helen Everett",
+      role: "Owner, The Dog & Cat Teeth Cleaning Boutique",
+      logo: "/client1.avif",
+      liveSince: "Aug 2026",
+      quote:
+        "Wow!!! Thank you so so so much! You brought a happy tear to my eyes :) I can’t thank you enough for putting up with all my changes. We love the website and I’m already at a 20% increase of bookings because of the beautiful website and online bookings 💜🌈💜🌈💜🐕🌈🐾 Also, it’s so super nice and awesome of you for pushing the settings page. WOW wow wow, that’s so amazing and I can’t thank you enough.",
+      website: {
+        label: "doggieteethcleaning.ca",
+        href: "https://doggieteethcleaning.ca/",
+      },
+      instagram: {
+        label: "@thedogteethcleaningboutique",
+        href: "https://www.instagram.com/thedogteethcleaningboutique/",
+      },
+      highlight: {
+        value: "20%",
+        label: "increase in bookings, reported by the owner",
+      },
+    },
   ],
 };
+
+// --- 3. INTEGRATIONS CONTENT ---
+export const INTEGRATE_CONTENT = {
+  heading: "Connects directly to the booking tools you already use",
+  logos: [
+    { src: "/logos/logo-colored.567e1a83.png", alt: "Square" },
+    { src: "/logos/Yyeq5JBdPOlCbi3940tI1rJVUxg.avif", alt: "Vagaro" },
+    { src: "/logos/images (1).png", alt: "DaySmart" },
+    { src: "/logos/images (2).png", alt: "Gingr" },
+    { src: "/logos/images (3).png", alt: "MoeGo" },
+    { src: "/logos/images (4).png", alt: "Groomer.io" },
+    { src: "/logos/65f8c006bb3910ba9ca00e98_Teddy Logo Secondary (1)-p-1600.png", alt: "Teddy" },
+    { src: "/logos/banner_logo.png", alt: "Groomore" },
+  ],
+};
+
 
 // --- 4. COMPARISON CONTENT ---
 export const SECTION_CONTENT_COMPARISON = {
@@ -94,53 +162,124 @@ export const TABLE_HEADERS = {
 };
 
 export const COMPARISON_DATA = [
-    {
-        feature: "Monthly Hosting Fees",
-        us: "$0 / month forever",
-        wix: "$30 - $50 / month",
-        wp: "$25 - $100+ / month",
-    },
-    {
-        feature: "Who Builds It?",
-        us: "100% Done-For-You",
-        wix: "You do the hard work",
-        wp: "Expensive local agencies",
-    },
-    {
-        feature: "Mobile Speed & SEO",
-        us: "Lightning fast (React code)",
-        wix: "Often slow and clunky",
-        wp: "Bloated with heavy plugins",
-    },
-    {
-        feature: "Future Edits",
-        us: "Simple click-and-type dashboard",
-        wix: "Confusing, cluttered menus",
-        wp: "Requires a developer",
-    },
-    {
-        feature: "Security",
-        us: "Bulletproof (No database to hack)",
-        wix: "Standard",
-        wp: "Highly vulnerable to hackers",
-    },
+  {
+    feature: "Monthly Hosting Fees",
+    us: "$0 / month",
+    wix: "$29 – $50 / month",
+    wp: "$25 – $100+ / month",
+  },
+  {
+    feature: "Who Builds It?",
+    us: "100% Done-For-You",
+    wix: "You do the hard work",
+    wp: "Expensive local agencies",
+  },
+  {
+    feature: "Mobile Speed & SEO",
+    us: "Fast, cached React pages",
+    wix: "Often heavy on mobile",
+    wp: "Slows down with plugins",
+  },
+  {
+    feature: "Future Edits",
+    us: "Simple click-and-type dashboard",
+    wix: "Confusing, cluttered menus",
+    wp: "Often needs a developer",
+  },
+  {
+    feature: "Maintenance & Security",
+    us: "Cached static frontend (no risky plugins)",
+    wix: "Managed by platform",
+    wp: "Needs constant plugin updates",
+  },
 ];
 
 // --- 5. FEATURES CONTENT ---
 export const AVAILABILITY_CONTENT = {
-    badge: "Built for Growth",
-    title: "Everything your pet business needs to thrive online",
-    description: "We don't just build a website; we build a 24/7 lead-generation machine for your salon. Designed specifically to convert local pet parents into loyal clients.",
-    stats: {
-        number: "$0",
-        suffix: "",
-        label: "Monthly Hosting Fees",
+  badge: "Built for Growth",
+  title: "Everything your pet business needs to thrive online",
+  description:
+    "We don't just build a website; we build a clean, mobile-first storefront designed to turn local Google searches into booked appointments.",
+  stats: {
+    number: "$0",
+    suffix: "",
+    label: "Monthly Hosting Fees",
+  },
+  features: [
+    "Mobile-First Design for Pet Parents on the go",
+    "Direct link or embed to your booking page",
+    "Local SEO structure built-in from day one",
+  ],
+};
+
+// --- 9. FAQ CONTENT ---
+export const FAQ_CONTENT = {
+  heading: "Frequently Asked Questions",
+  logoAlt: "NexPet Care",
+  logoSrc: "/sqrlogo.png",
+  expandIcon: "+",
+  items: [
+    {
+      id: "faq-1",
+      question: "Do I really pay $0 in monthly hosting fees?",
+      answer:
+        "Yes. Your live public site runs as lightweight, globally cached static pages rather than a heavy monthly builder, so it costs us pennies to keep online. Once you pay the $799 one-time build fee, we never send you a monthly hosting bill. You only pay your standard annual domain renewal (~$12–$20/year) directly to your registrar like GoDaddy or Namecheap.",
     },
-    features: [
-        "Mobile-First Design for Pet Parents on the go",
-        "Direct integration with your booking calendar",
-        "Local SEO built-in to rank locally on Google",
-    ],
+    {
+      id: "faq-2",
+      question: "Will this work with my booking software?",
+      answer:
+        "Yes. Every 'Book Now' button on your site connects directly to your existing online booking link or embed widget from Square, MoeGo, Vagaro, DaySmart, Gingr, Groomer.io, or any other booking platform—so you never have to switch software or migrate client records.",
+    },
+    {
+      id: "faq-3",
+      question: "What if I already own a domain name?",
+      answer:
+        "Perfect. Once your new website is approved and ready to launch, we point your existing domain (e.g., www.yourgroomingsalon.com) to your new site. You keep full ownership of your domain, and your business emails stay completely untouched.",
+    },
+    {
+      id: "faq-4",
+      question: "Do I have to write the text and provide photos?",
+      answer:
+        "No. We write clean, tailored copy around your services and location. If you have your own salon and pet photos, we love using them—and if you're short on photos, we fill the gaps with clean pet photography until you want to swap in your own.",
+    },
+    {
+      id: "faq-5",
+      question: "How long does it take to build my website?",
+      answer:
+        "Our standard turnaround time is 5 to 7 business days once we have your branding, service list, and booking link. We handle all the heavy lifting so you can stay focused on the pets.",
+    },
+    {
+      id: "faq-6",
+      question: "Will my website rank locally on Google?",
+      answer:
+        "We build every site with clean local SEO fundamentals from day one—fast mobile load times, structured city and service headings, metadata, and clean URLs—so pet parents searching locally can find you easily.",
+    },
+    {
+      id: "faq-7",
+      question: "Can I make changes to the site myself?",
+      answer:
+        "Yes. You get a simple, private editing dashboard where you can update prices, hours, text, photos, FAQs, and service order anytime—then hit Publish to push changes live in seconds without ever breaking the layout.",
+    },
+    {
+      id: "faq-8",
+      question: "Do I own the website after it is built?",
+      answer:
+        "Yes. You own your domain, your content, your photos, and your finished frontend website code. If you ever want to move off our $0/month hosting, you can request a full export of your site files anytime and host them on your own account (such as Cloudflare Pages, Vercel, or Netlify). Note: the private editing dashboard runs on NexPet Care's platform, so self-hosted exports are edited directly in code.",
+    },
+    {
+      id: "faq-9",
+      question: "What happens after the 30 days of launch support?",
+      answer:
+        "Your 30 days of launch support cover hands-on tweaks, photo swaps, and fine-tuning right after go-live. After that, your website stays online at $0/month, your editing dashboard keeps working, and if anything ever breaks on our infrastructure, we fix it free. You only pay again if you ask us to design a new page or custom feature later.",
+    },
+    {
+      id: "faq-10",
+      question: "How does payment work?",
+      answer:
+        "We show you a custom preview of your salon before you commit. If you decide to move forward, payments are processed securely by credit or debit card (via Stripe), and can be split 50% to start customization and 50% right before we connect your live domain.",
+    },
+  ],
 };
 
 // --- 6. DASHBOARD DEMO CONTENT ---
@@ -152,49 +291,6 @@ export const SECTION_CONTENT_DASHBOARD = {
   speedSuffix: "x",
 };
 
-// --- 7. TESTIMONIALS CONTENT ---
-export const testimonials = [
-  {
-    text: "I spent weeks fighting with a DIY website builder before giving up. NexPet Care built me a stunning, professional site in days. The best part? No more $40 monthly hosting bills!",
-    name: "Sarah Jenkins",
-    title: "Owner, Paws & Bubbles Grooming",
-    avatar: "/assets/avatar/avatar1.png",
-    size: "lg",
-    tone: "light",
-  },
-  {
-    text: "The integration with MoeGo was flawless. My clients love how easy it is to book on the new site, and it loads incredibly fast on their phones.",
-    name: "David Chen",
-    title: "Mobile Groomer, Suds on Wheels",
-    avatar: "https://images.unsplash.com/photo-1638347419042-40d24bb64d0d?q=80&w=3130&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    size: "sm",
-    tone: "muted",
-  },
-  {
-    text: "Finally, a web developer that actually understands the pet industry. They knew exactly how to highlight my services and integrated my Square calendar perfectly.",
-    name: "Amanda Roberts",
-    title: "Manager, The Happy Hound Daycare",
-    avatar: "", 
-    size: "sm",
-    tone: "muted",
-  },
-  {
-    text: "The zero monthly fees model is a game changer for a small business like mine. It paid for itself in less than a year, and the editing dashboard is so simple to use when I need to update pricing.",
-    name: "Emily Nakamura",
-    title: "Founder, Zen Cat Spa",
-    avatar: "https://images.unsplash.com/photo-1502323777036-f29e3972d82f?q=80&w=3540&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    size: "lg",
-    tone: "muted",
-  },
-  {
-    text: "I was worried about moving my domain over, but they handled everything for me. 100% stress-free experience from start to finish.",
-    name: "James Rodriguez",
-    title: "Owner, Top Dog Boarding",
-    avatar: "", 
-    size: "sm",
-    tone: "muted",
-  },
-];
 
 // --- 8. PRICING CONTENT ---
 export const pricingContent = {
@@ -217,55 +313,7 @@ export const pricingContent = {
   ],
 };
 
-// --- 9. FAQ CONTENT (Heavily Expanded for Conversion) ---
-export const FAQ_CONTENT = {
-  heading: 'Frequently Asked Questions',
-  logoAlt: 'NexPet Care',
-  logoSrc: '/sqrlogo.png',
-  expandIcon: '+',
-  items: [
-    {
-      id: 'faq-1',
-      question: 'Do I really pay $0 in monthly hosting fees?',
-      answer: 'Yes! We use modern serverless hosting technology. Once you pay the one-time flat fee for the website build, the site is yours forever. You will never receive a monthly hosting bill from us. (You only pay your standard annual domain name renewal to your registrar like GoDaddy or Namecheap).',
-    },
-    {
-      id: 'faq-2',
-      question: 'Will this work with my booking software?',
-      answer: 'Absolutely. We seamlessly integrate with Square, MoeGo, Vagaro, DaySmart, Gingr, and any other booking platform that provides an online booking link or booking widget.',
-    },
-    {
-      id: 'faq-3',
-      question: 'What if I already own a domain name?',
-      answer: 'Perfect! Once your new website is approved and ready to launch, we will simply point your new site to your existing domain name (e.g., www.yourgroomingsalon.com). You keep your domain and your business emails remain completely untouched.',
-    },
-    {
-      id: 'faq-4',
-      question: 'Do I have to write the text and provide photos?',
-      answer: 'Nope! We provide professional, industry-specific copywriting that highlights your services perfectly. If you have your own photos, we’d love to use them! If not, we have access to high-quality, authentic pet photography we can use to make your site look stunning.',
-    },
-    {
-      id: 'faq-5',
-      question: 'How long does it take to build my website?',
-      answer: 'Our standard turnaround time is 5 to 7 business days from the moment we start. We handle all the heavy lifting so you can stay focused on running your business.',
-    },
-    {
-      id: 'faq-6',
-      question: 'Will my website rank locally on Google?',
-      answer: 'Yes! We build your site with local SEO (Search Engine Optimization) best practices from day one. We structure your headings, locations, and service keywords perfectly so that pet parents in your specific city can find you when they search for groomers or daycares.',
-    },
-    {
-      id: 'faq-7',
-      question: 'Can I make changes to the site myself?',
-      answer: 'Yes! We provide you with a simple, private editing dashboard. If you need to change a price, update your holiday hours, or swap out a photo, you just log in, click the text, and type. No coding or developers required.',
-    },
-    {
-      id: 'faq-8',
-      question: 'Do I own the website after it is built?',
-      answer: '100%. Unlike Wix or Squarespace where you lose your entire site if you stop paying their monthly subscription, you own this website outright. You can even download the full source code if you ever want to move it elsewhere.',
-    },
-  ],
-};
+
 
 // --- 10. CTA CONTENT ---
 export const CTA_CONTENT = {
@@ -353,14 +401,14 @@ bottom: {
 };
 
 
-// --- HOW IT WORKS CONTENT ---
 export const HOW_IT_WORKS_CONTENT = {
   heading: "How It Works",
   description: "Get your pet grooming business online and thriving in just a few simple steps.",
   steps: [
     {
-      title: "Book a Strategy Call",
-      description: "Schedule a free consultation. We'll discuss your grooming business, target audience, and specific needs.",
+      title: "Preview & Quick Call",
+      description:
+        "Review your custom salon preview and hop on a quick call to walk through your services, photos, and any changes you want.",
       colorTheme: "orange",
       colors: {
         bg: "bg-orange-50 dark:bg-orange-500/10",
@@ -369,8 +417,9 @@ export const HOW_IT_WORKS_CONTENT = {
       },
     },
     {
-      title: "Design & Build",
-      description: "We design a stunning, fast, and mobile-friendly website tailored specifically to pet groomers.",
+      title: "Custom Build",
+      description:
+        "We tailor all 4 pages with your real photos, pricing, branding, and existing booking link within 5–7 business days.",
       colorTheme: "blue",
       colors: {
         bg: "bg-blue-50 dark:bg-blue-500/10",
@@ -380,7 +429,8 @@ export const HOW_IT_WORKS_CONTENT = {
     },
     {
       title: "Review & Refine",
-      description: "You review the site. We make unlimited revisions until it looks exactly the way you want it.",
+      description:
+        "Click through your staging site on your phone and computer. We dial in your edits until everything looks right.",
       colorTheme: "purple",
       colors: {
         bg: "bg-purple-50 dark:bg-purple-500/10",
@@ -389,8 +439,9 @@ export const HOW_IT_WORKS_CONTENT = {
       },
     },
     {
-      title: "Launch & Grow",
-      description: "We launch your site, set up your booking system, and help you start converting visitors into loyal clients.",
+      title: "Launch & Own It",
+      description:
+        "We connect your domain and existing booking system, hand over your private editing dashboard, and push your site live.",
       colorTheme: "orange",
       colors: {
         bg: "bg-orange-50 dark:bg-orange-500/10",
@@ -404,6 +455,5 @@ export const HOW_IT_WORKS_CONTENT = {
     { className: "md:absolute md:top-[120px] md:right-[15%]", rotate: "-rotate-6" },
     { className: "md:absolute md:top-[450px] md:left-[15%]", rotate: "rotate-6" },
     { className: "md:absolute md:top-[570px] md:right-[10%]", rotate: "-rotate-6" },
-    { className: "md:absolute md:top-[850px] md:left-[15%]", rotate: "rotate-6" },
-  ]
+  ],
 };
