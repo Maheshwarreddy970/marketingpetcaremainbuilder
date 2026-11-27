@@ -158,27 +158,40 @@ export default function TermsPage() {
 
                     <section>
                         <h2 className="text-xl font-semibold text-neutral-900">
-                            3. Revisions &amp; Refund Policy
+                            3. Revisions, Cancellation &amp; Refund Policy
                         </h2>
                         <p className="mt-3">
-                            Before you pay anything, we share a visual preview of your
-                            website concept. Once you commission a build, we work with you
-                            through reasonable revisions during the build stage until you
-                            approve the layout for launch.
+                            You pay $0 upfront. Before you spend a dollar, we build and
+                            customize your full staging preview and work with you through
+                            reasonable revisions until your pages, photos, pricing, and
+                            booking links are ready for launch.
                         </p>
                         <ul className="mt-3 list-disc space-y-2 pl-6">
                             <li>
-                                If you cancel before customization work begins, any deposit paid
-                                is 100% refundable.
+                                <strong className="font-semibold text-neutral-900">
+                                    No Deposit &amp; Free Cancellation Before Launch:
+                                </strong>{" "}
+                                Because there is no upfront deposit, you can walk away at any
+                                point during the preview and revision stage with zero fee and
+                                zero obligation. If you decide not to move forward, we simply
+                                delete the unlisted staging draft.
                             </li>
                             <li>
-                                Once customization has started and a staging build has been
-                                delivered for your review, the initial 50% deposit covers design
-                                and engineering time and is non-refundable.
+                                <strong className="font-semibold text-neutral-900">
+                                    Payment Upon Approval:
+                                </strong>{" "}
+                                You only pay the $799 one-time fee via Stripe after you have
+                                reviewed the finished staging site, tested your editing
+                                dashboard, and approved launch. Once payment is completed and
+                                your site is connected to your live domain (or your site files
+                                are exported), all payments are final.
                             </li>
                             <li>
-                                Once the final website is approved, connected to your domain,
-                                and launched, all payments are final.
+                                <strong className="font-semibold text-neutral-900">
+                                    Launch Guarantee:
+                                </strong>{" "}
+                                If we are unable to launch your approved site on your domain due
+                                to a technical issue on our end, you will receive a 100% refund.
                             </li>
                         </ul>
                     </section>
