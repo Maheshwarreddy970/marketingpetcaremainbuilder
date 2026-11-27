@@ -174,29 +174,30 @@ export default function PrivacyPage() {
                             </li>
                         </ul>
                     </section>
-
-                    <section>
-                        <h2 className="text-xl font-semibold text-neutral-900">
-                            6. Contact Us
-                        </h2>
-                        <p className="mt-3">
-                            For any privacy or data deletion request, email{" "}
-                            <a
-                                href="mailto:maheshwar@nexpetcare.com"
-                                className="font-medium text-neutral-900 underline underline-offset-4"
-                            >
-                                maheshwar@nexpetcare.com
-                            </a>{" "}
-                            or reach us through our{" "}
-                            <Link
-                                href="/contact"
-                                className="font-medium text-neutral-900 underline underline-offset-4"
-                            >
-                                Contact page
-                            </Link>
-                            . We respond to all privacy requests within 48 hours.
-                        </p>
-                    </section>
+<section>
+            <h2 className="text-xl font-semibold text-neutral-900">
+              11. Operator &amp; Contact
+            </h2>
+            <p className="mt-3">
+              NexPet Care is independently operated by Maheshwar Reddy, serving
+              pet care businesses across the United States and Canada. Questions
+              about these Terms? Email{" "}
+              <a
+                href="mailto:maheshwar@nexpetcare.com"
+                className="font-medium text-neutral-900 underline underline-offset-4"
+              >
+                maheshwar@nexpetcare.com
+              </a>{" "}
+              or visit our{" "}
+              <Link
+                href="/contact"
+                className="font-medium text-neutral-900 underline underline-offset-4"
+              >
+                Contact page
+              </Link>
+              .
+            </p>
+          </section>
                 </div>
             </div>
         </main>

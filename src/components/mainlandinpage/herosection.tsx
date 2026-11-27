@@ -72,21 +72,6 @@ export default function Herosection() {
               ))}
             </ul>
 
-            <a
-              href={catchHref}
-              onClick={goToCatch}
-              className={`inline-flex w-fit items-center gap-2 rounded-full border border-[#0B2545]/25 py-1.5 pl-4 pr-1.5 text-sm font-semibold transition-colors hover:border-[#0B2545] hover:bg-[#F4F6F8] ${focusRing}`}
-            >
-              {trustStrip.catchLabel}
-              <span
-                aria-hidden="true"
-                className="flex size-6 items-center justify-center rounded-full bg-[#0B2545] text-white"
-              >
-                <svg viewBox="0 0 24 24" className="size-3.5" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M6 9.5l6 6 6-6" />
-                </svg>
-              </span>
-            </a>
           </div>
         </div>
 

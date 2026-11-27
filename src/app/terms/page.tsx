@@ -72,47 +72,89 @@ export default function TermsPage() {
                         </p>
                     </section>
 
-                    <section>
-                        <h2 className="text-xl font-semibold text-neutral-900">
-                            2. Pricing, Payments &amp; No Recurring Subscriptions
-                        </h2>
-                        <p className="mt-3">
-                            The standard fee for a Complete Website Build is a{" "}
-                            <strong className="font-semibold text-neutral-900">
-                                flat one-time payment of $799 USD
-                            </strong>
-                            . NexPet Care does not charge recurring monthly or annual hosting
-                            or software subscriptions for your website.
-                        </p>
-                        <ul className="mt-3 list-disc space-y-2 pl-6">
-                            <li>
-                                <strong className="font-semibold text-neutral-900">
-                                    Payment Schedule:
-                                </strong>{" "}
-                                Payments are processed securely via Stripe (credit or debit
-                                card). You may pay 100% upfront or split the fee into 50% to
-                                begin customization and 50% prior to connecting your live domain
-                                and publishing.
-                            </li>
-                            <li>
-                                <strong className="font-semibold text-neutral-900">
-                                    Domain Renewals:
-                                </strong>{" "}
-                                You remain responsible for your own annual domain name
-                                registration and renewal fees paid directly to your registrar
-                                (e.g., GoDaddy, Namecheap, Cloudflare).
-                            </li>
-                            <li>
-                                <strong className="font-semibold text-neutral-900">
-                                    Optional Future Add-Ons:
-                                </strong>{" "}
-                                Because the platform is not a drag-and-drop page builder, adding
-                                brand-new pages, custom structural sections, or full redesigns
-                                after launch is optional and quoted separately as a one-time
-                                fee only if you request it.
-                            </li>
-                        </ul>
-                    </section>
+                  <section>
+            <h2 className="text-xl font-semibold text-neutral-900">
+              2. Pricing, $0 Upfront &amp; No Recurring Subscriptions
+            </h2>
+            <p className="mt-3">
+              The standard fee for a Complete Website Build is a{" "}
+              <strong className="font-semibold text-neutral-900">
+                flat one-time payment of $799 USD
+              </strong>
+              . NexPet Care does not charge recurring monthly or annual hosting
+              or software subscriptions for your website.
+            </p>
+            <ul className="mt-3 list-disc space-y-2 pl-6">
+              <li>
+                <strong className="font-semibold text-neutral-900">
+                  $0 Upfront — Pay Only Upon Approval:
+                </strong>{" "}
+                You pay $0 upfront to get started. We build and customize your
+                full four-page staging preview and let you test your private
+                editing dashboard first. You only pay the $799 one-time fee via
+                Stripe (credit or debit card) once you have reviewed the
+                finished build and given written approval to launch. We connect
+                your live domain and publish your site as soon as payment
+                clears.
+              </li>
+              <li>
+                <strong className="font-semibold text-neutral-900">
+                  Domain Renewals:
+                </strong>{" "}
+                You remain responsible for your own annual domain name
+                registration and renewal fees paid directly to your registrar
+                (e.g., GoDaddy, Namecheap, Cloudflare).
+              </li>
+              <li>
+                <strong className="font-semibold text-neutral-900">
+                  Optional Future Add-Ons:
+                </strong>{" "}
+                Because the platform is not a drag-and-drop page builder, adding
+                brand-new pages, custom structural sections, or full redesigns
+                after launch is optional and quoted separately as a one-time fee
+                only if you request it.
+              </li>
+            </ul>
+          </section>
+
+          <section>
+            <h2 className="text-xl font-semibold text-neutral-900">
+              3. Revisions, Cancellation &amp; Refund Policy
+            </h2>
+            <p className="mt-3">
+              During the staging phase, we work with you through reasonable
+              revisions until your pages, photos, pricing, and booking links
+              look right on both mobile and desktop.
+            </p>
+            <ul className="mt-3 list-disc space-y-2 pl-6">
+              <li>
+                <strong className="font-semibold text-neutral-900">
+                  Walk Away Free Before Approval:
+                </strong>{" "}
+                Because you pay $0 upfront, you may cancel or decline to move
+                forward at any point during the preview and staging review with
+                zero fee and zero obligation. If you choose not to proceed, we
+                simply delete the unlisted staging draft.
+              </li>
+              <li>
+                <strong className="font-semibold text-neutral-900">
+                  Final Payment Upon Launch Approval:
+                </strong>{" "}
+                Payment is only collected after you have inspected your finished
+                staging site, tested the editing dashboard, and approved launch.
+                Once payment is completed and your website is connected to your
+                live domain (or your site files are exported), all payments are
+                final.
+              </li>
+              <li>
+                <strong className="font-semibold text-neutral-900">
+                  Launch Guarantee:
+                </strong>{" "}
+                If we are unable to launch your approved site on your domain due
+                to a technical issue on our end, you will receive a 100% refund.
+              </li>
+            </ul>
+          </section>
 
                     <section>
                         <h2 className="text-xl font-semibold text-neutral-900">
@@ -264,29 +306,30 @@ export default function TermsPage() {
                             amount you actually paid to NexPet Care.
                         </p>
                     </section>
-
-                    <section>
-                        <h2 className="text-xl font-semibold text-neutral-900">
-                            11. Contact
-                        </h2>
-                        <p className="mt-3">
-                            Questions about these Terms? Email us directly at{" "}
-                            <a
-                                href="mailto:maheshwar@nexpetcare.com"
-                                className="font-medium text-neutral-900 underline underline-offset-4"
-                            >
-                                maheshwar@nexpetcare.com
-                            </a>{" "}
-                            or visit our{" "}
-                            <Link
-                                href="/contact"
-                                className="font-medium text-neutral-900 underline underline-offset-4"
-                            >
-                                Contact page
-                            </Link>
-                            .
-                        </p>
-                    </section>
+<section>
+            <h2 className="text-xl font-semibold text-neutral-900">
+              11. Operator &amp; Contact
+            </h2>
+            <p className="mt-3">
+              NexPet Care is independently operated by Maheshwar Reddy, serving
+              pet care businesses across the United States and Canada. Questions
+              about these Terms? Email{" "}
+              <a
+                href="mailto:maheshwar@nexpetcare.com"
+                className="font-medium text-neutral-900 underline underline-offset-4"
+              >
+                maheshwar@nexpetcare.com
+              </a>{" "}
+              or visit our{" "}
+              <Link
+                href="/contact"
+                className="font-medium text-neutral-900 underline underline-offset-4"
+              >
+                Contact page
+              </Link>
+              .
+            </p>
+          </section>
                 </div>
             </div>
         </main>

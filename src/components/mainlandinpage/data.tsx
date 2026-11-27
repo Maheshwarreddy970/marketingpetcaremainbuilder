@@ -49,8 +49,7 @@ export const HERO_CONTENT = {
 
   // One short trust line under the main CTA. The button scrolls to CATCH_CONTENT.
   trustStrip: {
-    items: ["$799 one-time", "$0/mo hosting", "You own the code"],
-    catchLabel: "What's the catch?",
+    items: ["$0 upfront until you love it","$799 one-time", "$0/mo hosting", "You own the code"],
   },
 
   comparison: {
@@ -282,7 +281,7 @@ export const FAQ_CONTENT = {
       id: "faq-10",
       question: "How does payment work?",
       answer:
-        "We show you a custom preview of your salon before you commit. If you decide to move forward, payments are processed securely by credit or debit card (via Stripe), and can be split 50% to start customization and 50% right before we connect your live domain.",
+       "You pay $0 upfront. We build your full 4-page preview and let you test-drive your editing dashboard first. You only pay the $799 one-time fee via Stripe (credit/debit card) once you love it and give the green light to connect your live domain."
     },
   ],
 };
@@ -307,7 +306,7 @@ export const pricingContent = {
   currency: "$",
   price: "799", 
   buttonText: "Claim Your Website Build",
-  footerNote: "Includes: Custom Design, Mobile Optimization, Local SEO Setup, and 30 Days of Support",
+  footerNote:"$0 due upfront. We build and customize your full preview first—you only pay via Stripe once you've tested your site and dashboard and approved launch. Includes 30 days of support.",
   features: [
     "100% Done-For-You Custom Build",
     "$0 Monthly Hosting Fees",
