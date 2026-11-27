@@ -66,6 +66,8 @@ export const HERO_CONTENT = {
 
 // Replace the old TESTIMONIALS_CONTENT block in ./data with this one.
 
+// Replace the old TESTIMONIALS_CONTENT block in ./data with this one.
+
 export type Testimonial = {
   business: string // used for the logo alt text and the React key
   reviewer: string // bold line in the attribution plate
@@ -76,6 +78,7 @@ export type Testimonial = {
   website: { label: string; href: string }
   instagram: { label: string; href: string }
   highlight?: { value: string; label: string }
+  proof?: { src: string } // review screenshot in /public, opens in a lightbox
 }
 
 export const TESTIMONIALS_CONTENT: {
@@ -91,8 +94,8 @@ export const TESTIMONIALS_CONTENT: {
   items: [
     {
       business: "Pet Town Grooming Inc",
-      reviewer: "Samuel Oluleye",
-      role: "Manager, Pet Town Grooming Inc",
+      reviewer: "Pet Town Grooming Inc",
+      role: "Dog grooming",
       logo: "/client2.webp",
       liveSince: "Aug 2026",
       quote:
@@ -105,11 +108,12 @@ export const TESTIMONIALS_CONTENT: {
         label: "@pettowngroominginc",
         href: "https://www.instagram.com/pettowngroominginc",
       },
+      proof: { src: "/reviewonescreenshort.avif" },
     },
     {
-      business: "The Dog & Cat Teeth Cleaning Boutique",
+      business: "The Dog Teeth Cleaning Boutique",
       reviewer: "Helen Everett",
-      role: "Owner, The Dog & Cat Teeth Cleaning Boutique",
+      role: "The Dog Teeth Cleaning Boutique",
       logo: "/client1.avif",
       liveSince: "Aug 2026",
       quote:
@@ -126,9 +130,10 @@ export const TESTIMONIALS_CONTENT: {
         value: "20%",
         label: "increase in bookings, reported by the owner",
       },
+      proof: { src: "/reviewtwoscreenshort.avif" },
     },
   ],
-};
+}
 
 // --- 3. INTEGRATIONS CONTENT ---
 export const INTEGRATE_CONTENT = {

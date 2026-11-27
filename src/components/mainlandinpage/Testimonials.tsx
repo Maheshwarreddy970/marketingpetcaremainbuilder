@@ -1,4 +1,6 @@
-import type { ReactNode } from 'react'
+'use client'
+
+import { useRef, type ReactNode } from 'react'
 import { TESTIMONIALS_CONTENT } from './data'
 
 // Same font + focus ring as the hero, so both sections read as one system.
@@ -77,13 +79,99 @@ function IconLink({
   )
 }
 
+function MailIcon({ className }: { className?: string }) {
+  return (
+    <svg {...iconProps} className={className}>
+      <rect width="20" height="16" x="2" y="4" rx="2" />
+      <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+    </svg>
+  )
+}
+
+function CloseIcon({ className }: { className?: string }) {
+  return (
+    <svg {...iconProps} strokeWidth={3} className={className}>
+      <path d="M18 6 6 18M6 6l12 12" />
+    </svg>
+  )
+}
+
+// Opens the original screenshot in a native <dialog>: Esc closes it, focus
+// stays inside while it is open, and clicking the dark backdrop closes it too.
+function ProofButton({ src, reviewer }: { src: string; reviewer: string }) {
+  const dialogRef = useRef<HTMLDialogElement>(null)
+
+  const open = () => {
+    document.body.style.overflow = 'hidden'
+    dialogRef.current?.showModal()
+  }
+  const close = () => dialogRef.current?.close()
+
+  return (
+    <>
+      <button
+        type="button"
+        onClick={open}
+        aria-haspopup="dialog"
+        className={`inline-flex w-fit items-center gap-2.5 rounded-full border border-[#DCE3EA] bg-white py-1.5 pl-1.5 pr-4 text-sm font-semibold transition-colors hover:border-[#0B2545] hover:bg-[#F4F6F8] ${focusRing}`}
+      >
+        <span
+          aria-hidden="true"
+          className="flex size-8 items-center justify-center rounded-full bg-[#D8EA3F] text-[#0B2545]"
+        >
+          <MailIcon className="size-4" />
+        </span>
+        View original message
+      </button>
+
+      <dialog
+        ref={dialogRef}
+        aria-label={`Original message from ${reviewer}`}
+        onClose={() => {
+          document.body.style.overflow = ''
+        }}
+        onClick={(e) => {
+          if (e.target === e.currentTarget) close()
+        }}
+        style={{ fontFamily: FONT }}
+        className="m-auto w-[min(92vw,52rem)] rounded-3xl border border-[#DCE3EA] bg-white p-0 text-[#0B2545] backdrop:bg-[#0B2545]/60"
+      >
+        <div className="flex max-h-[88vh] flex-col gap-4 p-4 md:p-5">
+          <div className="flex items-center justify-between gap-4">
+            <p className="text-base font-bold md:text-lg">Original message from {reviewer}</p>
+            <button
+              type="button"
+              onClick={close}
+              aria-label="Close"
+              className={`flex size-10 shrink-0 items-center justify-center rounded-full bg-[#0B2545] text-white transition-opacity hover:opacity-85 ${focusRing}`}
+            >
+              <CloseIcon className="size-4" />
+            </button>
+          </div>
+
+          {/* Scrolls sideways on phones so the text stays readable. */}
+          <div className="min-h-0 overflow-auto rounded-2xl border border-[#DCE3EA] bg-[#F4F6F8]">
+            <img
+              src={src}
+              alt={`Screenshot of the original review message from ${reviewer}`}
+              loading="lazy"
+              decoding="async"
+              className="block h-auto w-full min-w-[640px] md:min-w-0"
+            />
+          </div>
+        </div>
+      </dialog>
+    </>
+  )
+}
+
 export default function Testimonials() {
   const { id, title, intro, items } = TESTIMONIALS_CONTENT
   const headingId = `${id}-heading`
 
   return (
     <section
-    id="testimonials"
+      id={id}
       aria-labelledby={headingId}
       style={{ fontFamily: FONT }}
       className="mt-5 rounded-[35px] border border-[#DCE3EA] bg-white px-6 py-16 text-[#0B2545] md:px-16 md:py-24"
@@ -171,6 +259,12 @@ export default function Testimonials() {
                       hint={` ${item.instagram.label} (opens in a new tab)`}
                     />
                   </div>
+
+                  {item.proof && (
+                    <div className="border-t border-[#DCE3EA] pt-4">
+                      <ProofButton src={item.proof.src} reviewer={item.reviewer} />
+                    </div>
+                  )}
                 </figcaption>
               </figure>
             </li>
