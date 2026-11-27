@@ -237,9 +237,9 @@ export const FAQ_CONTENT = {
     },
     {
       id: "faq-3",
-      question: "What if I already own a domain name?",
+      question: "How does my domain name work? Do I have to share my GoDaddy password?",
       answer:
-        "Perfect. Once your new website is approved and ready to launch, we point your existing domain (e.g., www.yourgroomingsalon.com) to your new site. You keep full ownership of your domain, and your business emails stay completely untouched.",
+        "Never. Your domain always stays in your own registrar account (GoDaddy, Namecheap, Cloudflare, etc.) under your name. Once you approve your site for launch, we connect it using two simple DNS records—we can either send you the exact records or hop on a 5-minute screen share so you never have to hand over your password. Your business emails stay completely untouched. Don't have a domain yet? We'll walk you through buying one in your own name (~$12–$15/year) so you always own it 100%.",
     },
     {
       id: "faq-4",
@@ -307,13 +307,13 @@ export const pricingContent = {
   price: "799", 
   buttonText: "Claim Your Website Build",
   footerNote:"$0 due upfront. We build and customize your full preview first—you only pay via Stripe once you've tested your site and dashboard and approved launch. Includes 30 days of support.",
-  features: [
+ features: [
     "100% Done-For-You Custom Build",
     "$0 Monthly Hosting Fees",
     "Private Click-and-Type Editing Dashboard",
     "Connected to your existing booking software",
-    "Pointed to your existing domain name",
-    "Fast, secure React infrastructure",
+    "Connected to your domain via DNS (you keep 100% control)",
+    "Fast, cached React infrastructure",
   ],
 };
 
@@ -442,10 +442,10 @@ export const HOW_IT_WORKS_CONTENT = {
         border: "border-purple-100 dark:border-purple-500/20",
       },
     },
-    {
+  {
       title: "Launch & Own It",
       description:
-        "We connect your domain and existing booking system, hand over your private editing dashboard, and push your site live.",
+        "Once you approve the build, we connect your existing domain via DNS (emails untouched), hand over your editing dashboard, and push your site live.",
       colorTheme: "orange",
       colors: {
         bg: "bg-orange-50 dark:bg-orange-500/10",

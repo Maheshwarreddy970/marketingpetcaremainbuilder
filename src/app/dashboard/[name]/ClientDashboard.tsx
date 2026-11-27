@@ -10,6 +10,7 @@ import merge from "lodash/merge";
 import WebsiteOne from "@/components/templates/WebsiteOne";
 import { deployWebsiteAction, publishWebsiteUpdatesAction } from "@/actions/tenant";
 import HostingCatch from "@/components/mainlandinpage/HostingCatch";
+import CustomDomainCard, { type DnsRecord } from "./CustomDomainCard";
 
 interface DashboardProps {
   name: string;
@@ -23,6 +24,17 @@ const DEPLOY_STEPS = [
   "Mapping subdomain routing...",
   "Deploying to Global Network..."
 ];
+
+// TODO: replace these with the values your host gives you for custom domains
+// (the IP for the A record and the target for the CNAME record).
+const DNS_RECORDS: DnsRecord[] = [
+  { type: "A", host: "@", value: "REPLACE_WITH_HOST_IP" },
+  { type: "CNAME", host: "www", value: "REPLACE_WITH_HOST_CNAME" },
+];
+
+// TODO: replace with your real support email. A booking link also works:
+// change domainHelpHref below to that URL instead.
+const DOMAIN_HELP_EMAIL = "REPLACE_WITH_YOUR_EMAIL";
 
 // Client review shown in the showcase section.
 // Reviewer is a faceless brand, so we show the business logo + name instead of a personal photo.
@@ -71,6 +83,7 @@ export default function ClientDashboard({ name, dbData }: DashboardProps) {
   const activeDisplayUrl = dbData?.customDomain ? dbData.customDomain : `${name}.nexpetcare.com`;
   const liveHref = dbData?.customDomain ? `https://${dbData.customDomain}` : `https://${name}.nexpetcare.com`;
   const activeData = merge({}, dbData?.websiteOneData || {});
+  const domainHelpHref = `mailto:${DOMAIN_HELP_EMAIL}?subject=${encodeURIComponent(`Connect my domain: ${name}`)}`;
 
   const handlePublish = async () => {
     setIsPublishing(true);
@@ -126,7 +139,7 @@ export default function ClientDashboard({ name, dbData }: DashboardProps) {
       a.remove();
     } catch (error) {
       console.error(error);
-      alert("Failed to export ZIP.");
+      alert("Export Site Code");
     }
     setDownloading(false);
   };
@@ -173,11 +186,11 @@ export default function ClientDashboard({ name, dbData }: DashboardProps) {
           {paid ? (
             <button onClick={handleDownload} disabled={downloading} className="flex items-center gap-2 px-5 py-2 text-sm font-semibold bg-black text-white rounded-lg hover:bg-gray-800 transition-colors shadow-md disabled:opacity-70">
               {downloading ? <Loader2 size={16} className="animate-spin" /> : <Download size={16} />}
-              {downloading ? "Packaging..." : "Export ZIP"}
+              {downloading ? "Packaging..." : "Export Site Code (ZIP)"}
             </button>
           ) : (
             <button disabled className="flex items-center gap-2 px-5 py-2 text-sm font-semibold bg-gray-200 text-gray-500 rounded-lg cursor-not-allowed border border-gray-300">
-              <Lock size={16} /> Export ZIP (Pro)
+              <Lock size={16} /> Export Site Code (ZIP)
             </button>
           )}
 
@@ -221,6 +234,15 @@ export default function ClientDashboard({ name, dbData }: DashboardProps) {
           </div>
         </div>
       )}
+
+      {/* Custom Domain */}
+      <CustomDomainCard
+        freeAddress={`${name}.nexpetcare.com`}
+        customDomain={dbData?.customDomain}
+        isDeployed={isDeployed}
+        records={DNS_RECORDS}
+        helpHref={domainHelpHref}
+      />
 
       <div className="w-full max-w-7xl mx-auto mt-8 flex flex-col bg-white rounded-2xl border border-gray-300 overflow-hidden ring-1 ring-black/5">
         <div className="h-14 bg-gray-100/80 border-b border-gray-200 flex items-center px-4 justify-between select-none shrink-0 z-10 relative">
